@@ -1,5 +1,7 @@
 # Pixel Gym 美術規範與素材索引
 
+外觀整合更新：角色進化及衣櫃已接入本分支。新增 `assets/evolution/v2/characters/c01-tee-joggers-front.png` 與 `c01-tee-joggers-back.png`，保留 v1 原檔；生成提示及取用說明見 [v2 素材](../assets/evolution/v2/README.md)。五階體型、衣著與配件套用到行走及器材動作，仍屬關節式程式繪圖，尚非完整手繪動作圖集。部署狀態以 [整合紀錄](appearance-integration.md) 為準。
+
 2026-11-05 新增角色進化概念：`../assets/concepts/character-evolution-v1.png`（肌群詳情與五階段體型）及 `../assets/concepts/character-wardrobe-v1.png`（衣櫃與試穿）。沿用 C01 及已確認的暖色像素風，由內建 imagegen 生成；兩圖尚待使用者確認，屬靜態原型，未接入遊戲。需求改為隨訓練逐步變壯；規則提案、研究來源及互動說明見 `character-evolution-research-v1.txt`，完整提示詞見 `character-evolution-prompts-v1.txt`。
 
 更新日期：2026-11-04。

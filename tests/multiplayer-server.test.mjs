@@ -1,3 +1,4 @@
+import {DEFAULT_LOOK} from '../src/appearance-model.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {once} from 'node:events';
@@ -101,6 +102,7 @@ test('actual HTTP preview serves game assets and synchronizes separate network c
   const base=`http://127.0.0.1:${server.address().port}`;
   const post=async(route,body)=>{const r=await fetch(base+route,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});return {status:r.status,...await r.json()};};
   assert.equal((await fetch(base+'/')).status,200);assert.equal((await fetch(base+'/src/app.mjs')).status,200);assert.equal((await fetch(base+'/server.mjs')).status,404);
+  assert.equal((await fetch(base+'/assets/evolution/v1/ui/icon-back.svg')).headers.get('content-type'),'image/svg+xml');
   const a=await post('/api/rooms',{name:'窗一'}),b=await post(`/api/rooms/${a.roomCode}/join`,{name:'窗二'});
   assert.equal(a.status,201);assert.equal(b.snapshot.players.length,2);
   await post(`/api/rooms/${a.roomCode}/sync`,{token:a.token,seq:0,state:state({x:999})});
@@ -117,4 +119,28 @@ test('custom gym names persist across joining and syncing; invalid names rejecte
   assert.equal((await q.create()).snapshot.roomName,'街角健身室');
   for(const roomName of ['', ' ', '<script>', '字'.repeat(25), 42])
     assert.equal((await q.request('/api/rooms',{name:'甲',roomName})).error,'INVALID_ROOM_NAME');
+});
+
+test('appearance is shared on join, changes atomically with poses, and survives old packets and resume',async t=>{
+ const q=setup(t),look={v:1,stage:4,outfit:{...DEFAULT_LOOK.outfit,top:'top-06-varsity-jacket',bottom:'bottom-02-training-joggers',accessory:'accessory-02-wristbands'}};
+ const a=await q.request('/api/rooms',{name:'造型甲',look}),b=await q.request(`/api/rooms/${a.roomCode}/join`,{name:'觀察乙'});
+ assert.deepEqual(b.snapshot.players.find(p=>p.id===a.playerId).look,look);
+ const claimed=await q.action(a,'exercise',{stationKey:'squat'}),pose=claimed.snapshot.players.find(p=>p.id===a.playerId).exercise;
+ const upgraded={...look,stage:5,outfit:{...look.outfit,top:'top-02-street-jacket',color:'coral'}};
+ const updated=await q.action(a,'sync',{seq:9,state:state({look:upgraded,exercise:{...pose,depth:.8}})});
+ assert.deepEqual(updated.snapshot.players.find(p=>p.id===a.playerId).look,upgraded);
+ assert.equal(updated.snapshot.players.find(p=>p.id===a.playerId).exercise.depth,.8);
+ await q.action(a,'sync',{seq:8,state:state({look})});
+ const legacy=await q.action(a,'sync',{seq:10,state:state()});assert.deepEqual(legacy.snapshot.players.find(p=>p.id===a.playerId).look,upgraded);
+ q.advance(PLAYER_TTL+1);const resumed=await q.request(`/api/rooms/${a.roomCode}/join`,{token:a.token});assert.deepEqual(resumed.snapshot.players[0].look,upgraded);
+});
+
+test('invalid appearance is rejected without moving, leaking progress or changing another player',async t=>{
+ const q=setup(t),a=await q.create(),b=await q.request(`/api/rooms/${a.roomCode}/join`,{name:'乙'});let seq=1;
+ for(const look of [{...DEFAULT_LOOK,stage:6},{...DEFAULT_LOOK,stage:1.5},{...DEFAULT_LOOK,v:2},{...DEFAULT_LOOK,outfit:{...DEFAULT_LOOK.outfit,top:'https://bad.example/a.png'}},{...DEFAULT_LOOK,outfit:{...DEFAULT_LOOK.outfit,top:'shoes-02-navy-runners'}}]){
+  const r=await q.action(a,'sync',{seq:seq++,state:state({look})});assert.equal(r.error,'INVALID_LOOK');
+ }
+ const s=await q.snapshot(a.roomCode);assert.equal(s.players.find(p=>p.id===a.playerId).x,1050);assert.deepEqual(s.players.find(p=>p.id===b.playerId).look,DEFAULT_LOOK);
+ const clean=await q.action(a,'sync',{seq:99,state:state({look:{...DEFAULT_LOOK,abilities:{push:999999},accountUid:'not-shared',outfit:{...DEFAULT_LOOK.outfit,script:'bad'}}})});
+ assert.deepEqual(clean.snapshot.players.find(p=>p.id===a.playerId).look,DEFAULT_LOOK);assert.equal(JSON.stringify(clean).includes('not-shared'),false);
 });

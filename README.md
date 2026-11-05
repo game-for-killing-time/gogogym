@@ -8,6 +8,8 @@
 
 ## 本機試玩
 
+本分支加入角色進化、肌群進度、三套衣櫃及多人外觀同步。入場後按「角色」查看肌群或衣櫃，右上「角色選擇／備份」保留五角色管理。穿搭逐角色保存，隨備份匯出／匯入，行走及五類訓練保持目前體型與衣著。整合及發布前置條件見 [外觀整合紀錄](docs/appearance-integration.md)。
+
 安裝 Node.js 22.18 或更新版本後執行：
 
 ```sh
@@ -33,4 +35,4 @@ npm start
 
 Firebase 使用現有 `pixel-gym-c54cf` 專案。`firebase-web.json` 是瀏覽器所需公開設定，不是 Firebase 管理員私鑰。不要提交服務帳戶、Cloudflare API token、登入快取、資料庫匯出或 `.env`。
 
-目前人物仍沿用 C01，會員配色並非完整換裝；多人仍是 HTTP 同步，Durable Objects / WebSocket 尚未實作。訪客存檔不自動匯入雲端。歷史製作紀錄見 [project-history.md](docs/project-history.md)，以本頁及最新功能文件為準。
+人物沿用 C01，名牌配色與角色衣櫃分開；多人仍是 HTTP 同步，Durable Objects / WebSocket 尚未實作。訪客存檔不自動匯入雲端。歷史製作紀錄見 [project-history.md](docs/project-history.md)，以本頁及最新功能文件為準。

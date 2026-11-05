@@ -1,4 +1,5 @@
 import {newPlayer,completeTraining,periodKeys,CATEGORIES} from './training.mjs';
+import {PRESETS,validateOutfit,saveOutfit} from './evolution.mjs';
 export const PROFILE_KEY='gogogym.local-profile.v1',LEGACY_KEY='pixel-gym.player.v1';
 export const ACCENTS=['#81e8bb','#f2c28e','#b7b8f5','#edabb8','#a9c9f5'];
 const bad=()=>{throw Error('存檔格式不正確，原有資料未更改。');};
@@ -16,6 +17,9 @@ export function validateProgress(x){
  p.weekly={key:w.key,days:[...w.days],categories:categories(w.categories),contributions:w.contributions};
  if(Object.keys(x.receipts).length>20000)bad();
  for(const [id,r] of Object.entries(x.receipts)){if(!/^[a-zA-Z0-9_-]{1,80}$/.test(id)||['__proto__','constructor','prototype'].includes(id)||!obj(r)||!number(r.xp)||r.xp>120||![0,1].includes(r.contribution))bad();Object.defineProperty(p.receipts,id,{value:{xp:r.xp,contribution:r.contribution},enumerable:true,writable:true,configurable:true});}
+ if(x.completedWeeks!==undefined){if(!Array.isArray(x.completedWeeks)||x.completedWeeks.length>10000||x.completedWeeks.some(w=>!w||!key(w))||new Set(x.completedWeeks).size!==x.completedWeeks.length)bad();p.completedWeeks=[...x.completedWeeks];}
+ if(x.lastTraining!==undefined){const t=x.lastTraining;if(!obj(t)||!CATEGORIES.includes(t.category)||!number(t.xp)||t.xp<100||t.xp>120||typeof t.at!=='string'||!Number.isFinite(Date.parse(t.at)))bad();p.lastTraining={category:t.category,xp:t.xp,at:new Date(t.at).toISOString()};}
+ if(x.appearance!==undefined){const a=x.appearance;if(!obj(a)||!Number.isInteger(a.active)||a.active<0||a.active>=PRESETS.length||!Array.isArray(a.presets)||a.presets.length!==PRESETS.length)bad();p.appearance={active:a.active,presets:a.presets.map(o=>validateOutfit(o,p))};}
  return p;
 }
 export function validateProfile(x){
@@ -47,6 +51,7 @@ export class LocalProfiles{
  });}
  edit(id,name,accent,profileName){return this.change(p=>{if(!p||!ACCENTS.includes(accent))bad();const c=p.characters.find(c=>c.id===id);if(!c)bad();c.name=cleanName(name);c.accent=accent;p.name=cleanName(profileName);return p;});}
  select(id){return this.change(p=>{if(!p?.characters.some(c=>c.id===id))bad();p.activeId=id;return p;});}
+ saveAppearance(profileId,id,slot,outfit){return this.change(p=>{if(p?.id!==profileId||p.activeId!==id)throw Error('玩家或角色已切換，請重新打開衣櫃。');const c=activeCharacter(p);c.progress=saveOutfit(c.progress,slot,outfit);return p;});}
  async settle(profileId,id,training){let reward;const profile=await this.change(p=>{if(p?.id!==profileId)throw Error('玩家檔案已改變，請重新入場。');const result=settleProfile(p,id,training);reward=result.reward;return result.profile;});return {profile,reward};}
  snapshot(){return this.storage.getItem(PROFILE_KEY);}
  replace(candidate,expected){

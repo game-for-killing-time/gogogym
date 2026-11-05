@@ -1,0 +1,14 @@
+{
+  "method": "builtin imagegen",
+  "date": "2026-11-05",
+  "entries": [
+    {
+      "name": "c01-tee-joggers-front.png",
+      "prompt": "Use case: identity-preserve. Production sprite edit for Pixel Gym. Image 1 is the exact C01 adult chibi character edit target; images 2 and 3 are garment design references. Replace ONLY his grey tank and shorts with the coral short-sleeve crew-neck T-shirt from reference 2 and the navy training joggers from reference 3. Preserve the exact face, hair, muscular stage-3 build, full-body neutral standing pose, camera, skin shading, white shoes, pixel-art style and 1024x1536 canvas registration of image 1. Head at y170..465, shoulders near y500, waist at y810, soles at y1400. Shirt has real loose fabric folds, fitted round collar, sewn sleeve hems; joggers have thin mint side stripes, cream drawstring, pocket piping, ribbed ankle cuffs. Polished warm detailed pixel-art, no blocky geometric substitute. Genuine transparent background. No text, no labels, no extra objects, no floor shadow."
+    },
+    {
+      "name": "c01-tee-joggers-back.png",
+      "prompt": "Use case: identity-preserve. Production sprite edit for Pixel Gym. Image 1 is the exact C01 adult chibi BACK VIEW edit target; images 2 and 3 are garment references. Replace ONLY grey tank and shorts with coral short-sleeve crew-neck T-shirt and navy training joggers, matching references. Keep strictly BACK VIEW, exact head, brown spiky hair, muscular stage-3 build, pose, limb positions, white shoes, pixel-art shading, and 1024x1536 canvas registration. Head y170..465, shoulders y500, waist y810, soles y1400. Real fabric shoulder/back folds and sleeve hems, navy joggers thin mint side stripes, back yoke, ribbed ankle cuffs. Detailed warm pixel art matching original. No text or labels, no props. Preserve truly transparent background. No floor shadow."
+    }
+  ]
+}

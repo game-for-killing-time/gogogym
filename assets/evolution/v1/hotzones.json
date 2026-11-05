@@ -1,0 +1,1416 @@
+{
+  "coordinateSystem": "original 1024x1536 portrait canvas",
+  "usage": "Render over corresponding basic outfit character at identical scale and position. Ellipses are initial UI selection regions, not exact anatomical contours; garment poses require separate alignment.",
+  "regions": [
+    {
+      "id": "c01-stage-01-front-chest",
+      "label": "1階 正面 胸肌選取區",
+      "file": "muscles/overlays/c01-stage-01-front-chest.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-01-front.png",
+      "ellipses": [
+        [
+          485,
+          660,
+          44,
+          35
+        ],
+        [
+          579,
+          660,
+          44,
+          35
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-01-front-shoulder",
+      "label": "1階 正面 肩部選取區",
+      "file": "muscles/overlays/c01-stage-01-front-shoulder.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-01-front.png",
+      "ellipses": [
+        [
+          389,
+          607,
+          38,
+          43
+        ],
+        [
+          635,
+          607,
+          38,
+          43
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-01-front-biceps",
+      "label": "1階 正面 二頭肌選取區",
+      "file": "muscles/overlays/c01-stage-01-front-biceps.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-01-front.png",
+      "ellipses": [
+        [
+          375,
+          705,
+          31,
+          48
+        ],
+        [
+          649,
+          705,
+          31,
+          48
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-01-front-core",
+      "label": "1階 正面 腹／核心選取區",
+      "file": "muscles/overlays/c01-stage-01-front-core.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-01-front.png",
+      "ellipses": [
+        [
+          527,
+          786,
+          65,
+          53
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-01-front-quads",
+      "label": "1階 正面 大腿前側選取區",
+      "file": "muscles/overlays/c01-stage-01-front-quads.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-01-front.png",
+      "ellipses": [
+        [
+          423,
+          1032,
+          42,
+          46
+        ],
+        [
+          601,
+          1032,
+          42,
+          46
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-01-front-calves",
+      "label": "1階 正面 小腿選取區",
+      "file": "muscles/overlays/c01-stage-01-front-calves.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-01-front.png",
+      "ellipses": [
+        [
+          400,
+          1168,
+          34,
+          49
+        ],
+        [
+          624,
+          1168,
+          34,
+          49
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-01-back-back",
+      "label": "1階 背面 背肌選取區",
+      "file": "muscles/overlays/c01-stage-01-back-back.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-01-back.png",
+      "ellipses": [
+        [
+          465,
+          665,
+          44,
+          81
+        ],
+        [
+          559,
+          665,
+          44,
+          81
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-01-back-shoulder",
+      "label": "1階 背面 肩部選取區",
+      "file": "muscles/overlays/c01-stage-01-back-shoulder.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-01-back.png",
+      "ellipses": [
+        [
+          389,
+          604,
+          38,
+          42
+        ],
+        [
+          635,
+          604,
+          38,
+          42
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-01-back-triceps",
+      "label": "1階 背面 三頭肌選取區",
+      "file": "muscles/overlays/c01-stage-01-back-triceps.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-01-back.png",
+      "ellipses": [
+        [
+          375,
+          705,
+          30,
+          48
+        ],
+        [
+          649,
+          705,
+          30,
+          48
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-01-back-glutes",
+      "label": "1階 背面 臀部選取區",
+      "file": "muscles/overlays/c01-stage-01-back-glutes.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-01-back.png",
+      "ellipses": [
+        [
+          448,
+          862,
+          43,
+          41
+        ],
+        [
+          576,
+          862,
+          43,
+          41
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-01-back-hamstrings",
+      "label": "1階 背面 大腿後側選取區",
+      "file": "muscles/overlays/c01-stage-01-back-hamstrings.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-01-back.png",
+      "ellipses": [
+        [
+          421,
+          1032,
+          39,
+          46
+        ],
+        [
+          603,
+          1032,
+          39,
+          46
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-01-back-calves",
+      "label": "1階 背面 小腿選取區",
+      "file": "muscles/overlays/c01-stage-01-back-calves.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-01-back.png",
+      "ellipses": [
+        [
+          400,
+          1168,
+          34,
+          49
+        ],
+        [
+          624,
+          1168,
+          34,
+          49
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-02-front-chest",
+      "label": "2階 正面 胸肌選取區",
+      "file": "muscles/overlays/c01-stage-02-front-chest.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-02-front.png",
+      "ellipses": [
+        [
+          485,
+          605,
+          44,
+          35
+        ],
+        [
+          579,
+          605,
+          44,
+          35
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-02-front-shoulder",
+      "label": "2階 正面 肩部選取區",
+      "file": "muscles/overlays/c01-stage-02-front-shoulder.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-02-front.png",
+      "ellipses": [
+        [
+          360,
+          552,
+          38,
+          43
+        ],
+        [
+          664,
+          552,
+          38,
+          43
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-02-front-biceps",
+      "label": "2階 正面 二頭肌選取區",
+      "file": "muscles/overlays/c01-stage-02-front-biceps.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-02-front.png",
+      "ellipses": [
+        [
+          334,
+          650,
+          31,
+          48
+        ],
+        [
+          690,
+          650,
+          31,
+          48
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-02-front-core",
+      "label": "2階 正面 腹／核心選取區",
+      "file": "muscles/overlays/c01-stage-02-front-core.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-02-front.png",
+      "ellipses": [
+        [
+          527,
+          731,
+          65,
+          53
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-02-front-quads",
+      "label": "2階 正面 大腿前側選取區",
+      "file": "muscles/overlays/c01-stage-02-front-quads.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-02-front.png",
+      "ellipses": [
+        [
+          423,
+          1032,
+          42,
+          46
+        ],
+        [
+          601,
+          1032,
+          42,
+          46
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-02-front-calves",
+      "label": "2階 正面 小腿選取區",
+      "file": "muscles/overlays/c01-stage-02-front-calves.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-02-front.png",
+      "ellipses": [
+        [
+          400,
+          1168,
+          34,
+          49
+        ],
+        [
+          624,
+          1168,
+          34,
+          49
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-02-back-back",
+      "label": "2階 背面 背肌選取區",
+      "file": "muscles/overlays/c01-stage-02-back-back.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-02-back.png",
+      "ellipses": [
+        [
+          465,
+          610,
+          44,
+          81
+        ],
+        [
+          559,
+          610,
+          44,
+          81
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-02-back-shoulder",
+      "label": "2階 背面 肩部選取區",
+      "file": "muscles/overlays/c01-stage-02-back-shoulder.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-02-back.png",
+      "ellipses": [
+        [
+          360,
+          549,
+          38,
+          42
+        ],
+        [
+          664,
+          549,
+          38,
+          42
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-02-back-triceps",
+      "label": "2階 背面 三頭肌選取區",
+      "file": "muscles/overlays/c01-stage-02-back-triceps.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-02-back.png",
+      "ellipses": [
+        [
+          334,
+          650,
+          30,
+          48
+        ],
+        [
+          690,
+          650,
+          30,
+          48
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-02-back-glutes",
+      "label": "2階 背面 臀部選取區",
+      "file": "muscles/overlays/c01-stage-02-back-glutes.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-02-back.png",
+      "ellipses": [
+        [
+          448,
+          862,
+          43,
+          41
+        ],
+        [
+          576,
+          862,
+          43,
+          41
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-02-back-hamstrings",
+      "label": "2階 背面 大腿後側選取區",
+      "file": "muscles/overlays/c01-stage-02-back-hamstrings.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-02-back.png",
+      "ellipses": [
+        [
+          421,
+          1032,
+          39,
+          46
+        ],
+        [
+          603,
+          1032,
+          39,
+          46
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-02-back-calves",
+      "label": "2階 背面 小腿選取區",
+      "file": "muscles/overlays/c01-stage-02-back-calves.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-02-back.png",
+      "ellipses": [
+        [
+          400,
+          1168,
+          34,
+          49
+        ],
+        [
+          624,
+          1168,
+          34,
+          49
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-03-front-chest",
+      "label": "3階 正面 胸肌選取區",
+      "file": "muscles/overlays/c01-stage-03-front-chest.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-03-front.png",
+      "ellipses": [
+        [
+          485,
+          605,
+          46.88,
+          35
+        ],
+        [
+          579,
+          605,
+          46.88,
+          35
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-03-front-shoulder",
+      "label": "3階 正面 肩部選取區",
+      "file": "muscles/overlays/c01-stage-03-front-shoulder.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-03-front.png",
+      "ellipses": [
+        [
+          348,
+          552,
+          40.4,
+          43
+        ],
+        [
+          676,
+          552,
+          40.4,
+          43
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-03-front-biceps",
+      "label": "3階 正面 二頭肌選取區",
+      "file": "muscles/overlays/c01-stage-03-front-biceps.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-03-front.png",
+      "ellipses": [
+        [
+          322,
+          650,
+          33.64,
+          48
+        ],
+        [
+          702,
+          650,
+          33.64,
+          48
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-03-front-core",
+      "label": "3階 正面 腹／核心選取區",
+      "file": "muscles/overlays/c01-stage-03-front-core.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-03-front.png",
+      "ellipses": [
+        [
+          527,
+          731,
+          65,
+          53
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-03-front-quads",
+      "label": "3階 正面 大腿前側選取區",
+      "file": "muscles/overlays/c01-stage-03-front-quads.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-03-front.png",
+      "ellipses": [
+        [
+          423,
+          1032,
+          43.8,
+          46
+        ],
+        [
+          601,
+          1032,
+          43.8,
+          46
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-03-front-calves",
+      "label": "3階 正面 小腿選取區",
+      "file": "muscles/overlays/c01-stage-03-front-calves.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-03-front.png",
+      "ellipses": [
+        [
+          400,
+          1168,
+          35.44,
+          49
+        ],
+        [
+          624,
+          1168,
+          35.44,
+          49
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-03-back-back",
+      "label": "3階 背面 背肌選取區",
+      "file": "muscles/overlays/c01-stage-03-back-back.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-03-back.png",
+      "ellipses": [
+        [
+          465,
+          610,
+          46.4,
+          81
+        ],
+        [
+          559,
+          610,
+          46.4,
+          81
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-03-back-shoulder",
+      "label": "3階 背面 肩部選取區",
+      "file": "muscles/overlays/c01-stage-03-back-shoulder.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-03-back.png",
+      "ellipses": [
+        [
+          348,
+          549,
+          40.4,
+          42
+        ],
+        [
+          676,
+          549,
+          40.4,
+          42
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-03-back-triceps",
+      "label": "3階 背面 三頭肌選取區",
+      "file": "muscles/overlays/c01-stage-03-back-triceps.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-03-back.png",
+      "ellipses": [
+        [
+          322,
+          650,
+          32.64,
+          48
+        ],
+        [
+          702,
+          650,
+          32.64,
+          48
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-03-back-glutes",
+      "label": "3階 背面 臀部選取區",
+      "file": "muscles/overlays/c01-stage-03-back-glutes.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-03-back.png",
+      "ellipses": [
+        [
+          448,
+          862,
+          44.92,
+          41
+        ],
+        [
+          576,
+          862,
+          44.92,
+          41
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-03-back-hamstrings",
+      "label": "3階 背面 大腿後側選取區",
+      "file": "muscles/overlays/c01-stage-03-back-hamstrings.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-03-back.png",
+      "ellipses": [
+        [
+          421,
+          1032,
+          40.8,
+          46
+        ],
+        [
+          603,
+          1032,
+          40.8,
+          46
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-03-back-calves",
+      "label": "3階 背面 小腿選取區",
+      "file": "muscles/overlays/c01-stage-03-back-calves.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-03-back.png",
+      "ellipses": [
+        [
+          400,
+          1168,
+          35.44,
+          49
+        ],
+        [
+          624,
+          1168,
+          35.44,
+          49
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-04-front-chest",
+      "label": "4階 正面 胸肌選取區",
+      "file": "muscles/overlays/c01-stage-04-front-chest.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-04-front.png",
+      "ellipses": [
+        [
+          485,
+          605,
+          52.64,
+          35
+        ],
+        [
+          579,
+          605,
+          52.64,
+          35
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-04-front-shoulder",
+      "label": "4階 正面 肩部選取區",
+      "file": "muscles/overlays/c01-stage-04-front-shoulder.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-04-front.png",
+      "ellipses": [
+        [
+          324,
+          552,
+          45.2,
+          43
+        ],
+        [
+          700,
+          552,
+          45.2,
+          43
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-04-front-biceps",
+      "label": "4階 正面 二頭肌選取區",
+      "file": "muscles/overlays/c01-stage-04-front-biceps.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-04-front.png",
+      "ellipses": [
+        [
+          298,
+          650,
+          38.92,
+          48
+        ],
+        [
+          726,
+          650,
+          38.92,
+          48
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-04-front-core",
+      "label": "4階 正面 腹／核心選取區",
+      "file": "muscles/overlays/c01-stage-04-front-core.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-04-front.png",
+      "ellipses": [
+        [
+          527,
+          731,
+          65,
+          53
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-04-front-quads",
+      "label": "4階 正面 大腿前側選取區",
+      "file": "muscles/overlays/c01-stage-04-front-quads.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-04-front.png",
+      "ellipses": [
+        [
+          423,
+          1032,
+          47.4,
+          46
+        ],
+        [
+          601,
+          1032,
+          47.4,
+          46
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-04-front-calves",
+      "label": "4階 正面 小腿選取區",
+      "file": "muscles/overlays/c01-stage-04-front-calves.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-04-front.png",
+      "ellipses": [
+        [
+          400,
+          1168,
+          38.32,
+          49
+        ],
+        [
+          624,
+          1168,
+          38.32,
+          49
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-04-back-back",
+      "label": "4階 背面 背肌選取區",
+      "file": "muscles/overlays/c01-stage-04-back-back.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-04-back.png",
+      "ellipses": [
+        [
+          465,
+          610,
+          51.2,
+          81
+        ],
+        [
+          559,
+          610,
+          51.2,
+          81
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-04-back-shoulder",
+      "label": "4階 背面 肩部選取區",
+      "file": "muscles/overlays/c01-stage-04-back-shoulder.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-04-back.png",
+      "ellipses": [
+        [
+          324,
+          549,
+          45.2,
+          42
+        ],
+        [
+          700,
+          549,
+          45.2,
+          42
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-04-back-triceps",
+      "label": "4階 背面 三頭肌選取區",
+      "file": "muscles/overlays/c01-stage-04-back-triceps.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-04-back.png",
+      "ellipses": [
+        [
+          298,
+          650,
+          37.92,
+          48
+        ],
+        [
+          726,
+          650,
+          37.92,
+          48
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-04-back-glutes",
+      "label": "4階 背面 臀部選取區",
+      "file": "muscles/overlays/c01-stage-04-back-glutes.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-04-back.png",
+      "ellipses": [
+        [
+          448,
+          862,
+          48.76,
+          41
+        ],
+        [
+          576,
+          862,
+          48.76,
+          41
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-04-back-hamstrings",
+      "label": "4階 背面 大腿後側選取區",
+      "file": "muscles/overlays/c01-stage-04-back-hamstrings.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-04-back.png",
+      "ellipses": [
+        [
+          421,
+          1032,
+          44.4,
+          46
+        ],
+        [
+          603,
+          1032,
+          44.4,
+          46
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-04-back-calves",
+      "label": "4階 背面 小腿選取區",
+      "file": "muscles/overlays/c01-stage-04-back-calves.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-04-back.png",
+      "ellipses": [
+        [
+          400,
+          1168,
+          38.32,
+          49
+        ],
+        [
+          624,
+          1168,
+          38.32,
+          49
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-05-front-chest",
+      "label": "5階 正面 胸肌選取區",
+      "file": "muscles/overlays/c01-stage-05-front-chest.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-05-front.png",
+      "ellipses": [
+        [
+          485,
+          605,
+          62,
+          35
+        ],
+        [
+          579,
+          605,
+          62,
+          35
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-05-front-shoulder",
+      "label": "5階 正面 肩部選取區",
+      "file": "muscles/overlays/c01-stage-05-front-shoulder.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-05-front.png",
+      "ellipses": [
+        [
+          285,
+          552,
+          53,
+          43
+        ],
+        [
+          739,
+          552,
+          53,
+          43
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-05-front-biceps",
+      "label": "5階 正面 二頭肌選取區",
+      "file": "muscles/overlays/c01-stage-05-front-biceps.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-05-front.png",
+      "ellipses": [
+        [
+          259,
+          650,
+          47.5,
+          48
+        ],
+        [
+          765,
+          650,
+          47.5,
+          48
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-05-front-core",
+      "label": "5階 正面 腹／核心選取區",
+      "file": "muscles/overlays/c01-stage-05-front-core.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-05-front.png",
+      "ellipses": [
+        [
+          527,
+          731,
+          65,
+          53
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-05-front-quads",
+      "label": "5階 正面 大腿前側選取區",
+      "file": "muscles/overlays/c01-stage-05-front-quads.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-05-front.png",
+      "ellipses": [
+        [
+          423,
+          1032,
+          53.25,
+          46
+        ],
+        [
+          601,
+          1032,
+          53.25,
+          46
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-05-front-calves",
+      "label": "5階 正面 小腿選取區",
+      "file": "muscles/overlays/c01-stage-05-front-calves.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-05-front.png",
+      "ellipses": [
+        [
+          400,
+          1168,
+          43,
+          49
+        ],
+        [
+          624,
+          1168,
+          43,
+          49
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-05-back-back",
+      "label": "5階 背面 背肌選取區",
+      "file": "muscles/overlays/c01-stage-05-back-back.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-05-back.png",
+      "ellipses": [
+        [
+          465,
+          610,
+          59,
+          81
+        ],
+        [
+          559,
+          610,
+          59,
+          81
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-05-back-shoulder",
+      "label": "5階 背面 肩部選取區",
+      "file": "muscles/overlays/c01-stage-05-back-shoulder.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-05-back.png",
+      "ellipses": [
+        [
+          285,
+          549,
+          53,
+          42
+        ],
+        [
+          739,
+          549,
+          53,
+          42
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-05-back-triceps",
+      "label": "5階 背面 三頭肌選取區",
+      "file": "muscles/overlays/c01-stage-05-back-triceps.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-05-back.png",
+      "ellipses": [
+        [
+          259,
+          650,
+          46.5,
+          48
+        ],
+        [
+          765,
+          650,
+          46.5,
+          48
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-05-back-glutes",
+      "label": "5階 背面 臀部選取區",
+      "file": "muscles/overlays/c01-stage-05-back-glutes.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-05-back.png",
+      "ellipses": [
+        [
+          448,
+          862,
+          55,
+          41
+        ],
+        [
+          576,
+          862,
+          55,
+          41
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-05-back-hamstrings",
+      "label": "5階 背面 大腿後側選取區",
+      "file": "muscles/overlays/c01-stage-05-back-hamstrings.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-05-back.png",
+      "ellipses": [
+        [
+          421,
+          1032,
+          50.25,
+          46
+        ],
+        [
+          603,
+          1032,
+          50.25,
+          46
+        ]
+      ]
+    },
+    {
+      "id": "c01-stage-05-back-calves",
+      "label": "5階 背面 小腿選取區",
+      "file": "muscles/overlays/c01-stage-05-back-calves.svg",
+      "width": 1024,
+      "height": 1536,
+      "kind": "selection-overlay",
+      "status": "initial-ui-hit-region-not-anatomical-mask",
+      "character": "characters/c01-stage-05-back.png",
+      "ellipses": [
+        [
+          400,
+          1168,
+          43,
+          49
+        ],
+        [
+          624,
+          1168,
+          43,
+          49
+        ]
+      ]
+    }
+  ]
+}

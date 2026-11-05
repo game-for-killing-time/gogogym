@@ -9,6 +9,8 @@ export function createLocalDatabase(filename=':memory:'){
   db.exec(readFileSync(new URL('../migrations/0002_accounts.sql',import.meta.url),'utf8'));
   if(!db.prepare('PRAGMA table_info(gym_rooms)').all().some(column=>column.name==='name'))
     db.exec(readFileSync(new URL('../migrations/0003_room_names.sql',import.meta.url),'utf8'));
+  if(!db.prepare('PRAGMA table_info(gym_players)').all().some(column=>column.name==='look_json'))
+    db.exec(readFileSync(new URL('../migrations/0004_appearance.sql',import.meta.url),'utf8'));
   function prepare(sql){
     let values=[];
     const wrapped={

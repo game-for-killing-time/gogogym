@@ -2,7 +2,10 @@ import {newPlayer, periodKeys, CATEGORIES} from './training.mjs';
 import {createSession,input,tick,sessionResult,releaseInputs} from './session.mjs';
 import {objects,crops,blocked,findPath,nearestStation,stationAt} from './room.mjs';
 import {camera,toScreen,toWorld,panelPosition} from './view.mjs';
-import {drawExerciseActor} from './exercise-art.mjs';
+import {drawExerciseActor,drawWalkingActor} from './exercise-art.mjs';
+import {playerLook,safeLook} from './appearance-model.mjs';
+import {EvolutionUI} from './evolution-ui.mjs';
+import {splitReward} from './evolution.mjs';
 import {MultiplayerClient} from './multiplayer.mjs';
 import {LocalProfiles,PROFILE_KEY,activeCharacter} from './local-profile.mjs';
 import {localProfilePanel} from './local-profile-ui.mjs';
@@ -26,6 +29,7 @@ let view={scale:1,x:0,y:0}, viewport={width:1200,height:675}, emote='',emoteUnti
 let goalExpanded=true;
 let startingTraining=false,startGeneration=0,localMember=null,lastNetworkStatus='offline';
 let accountOpen=false,settling=false,trainingTrace=[],trainingSteps=0,stepRemainder=0;
+let characterUI=null;
 function profileChanged(next){
   profile=next;player=activeCharacter(profile)?.progress||newPlayer();
   document.documentElement.style.setProperty('--member-accent',activeCharacter(profile)?.accent||'#c2ccaf');
@@ -34,6 +38,7 @@ function profileChanged(next){
 }
 function showAccount(){
   if(session||startingTraining||settling)return;
+  characterUI?.close(true);
   localProfilePanel({store:profiles,show,safe,onChanged:profileChanged,
     beforeChange:async()=>{await net.leave();entered=false;},
     onEnter:()=>{entered=true;hidePanel();if(inviteCode()&&!net.session)showRoom();}});
@@ -46,7 +51,7 @@ function nickname(){return profile?.name||'新會員';}
 function inviteCode(){return (new URL(location.href).searchParams.get('room')||'').toUpperCase().slice(0,6);}
 function inviteLink(){const url=new URL(location.href);url.search='';url.searchParams.set('room',net.session.roomCode);url.hash='';return url.href;}
 function networkState(){
-  return {x:actor.x,y:actor.y,dir:actor.dir,moving:actor.walk>0,emote:performance.now()<emoteUntil?emote:null,
+  return {x:actor.x,y:actor.y,dir:actor.dir,moving:actor.walk>0,look:playerLook(player),emote:performance.now()<emoteUntil?emote:null,
     exercise:session?{stationKey:currentStation.stationKey,category:session.category,time:session.time,phase:session.phase,rep:session.rep,height:session.height,extension:session.extension,depth:session.depth,balance:session.balance,sprint:session.sprint,paused}:null};
 }
 function receiveSnapshot(snapshot){
@@ -93,10 +98,10 @@ function renderRoster(){
   for(const p of net.snapshot?.players||[]){
     const li=document.createElement('li'),dot=document.createElement('i'),label=document.createElement('span'),state=document.createElement('small');
     dot.style.background=p.color;label.textContent=p.id===net.session?.playerId?'你':p.name;
-    state.textContent=p.exercise?`${names[p.exercise.category]}${p.exercise.paused?' · 暫停':'訓練中'}`:p.moving?'行走中':'休息中';li.append(dot,label,state);list.append(li);
+    state.textContent=`第 ${safeLook(p.look).stage} 階 · `+(p.exercise?`${names[p.exercise.category]}${p.exercise.paused?' · 暫停':'訓練中'}`:p.moving?'行走中':'休息中');li.append(dot,label,state);list.append(li);
   }
   const count=$('#room-member-count');if(count)count.textContent=`${net.snapshot?.players?.length||0} / 12 人`;
-  const state=$('#room-connection');if(state)state.textContent=net.status==='online'?'同房的人會即時睇到彼此移動、訓練同表情。':'連線中斷，正在重試。';
+  const state=$('#room-connection');if(state)state.textContent=net.status==='online'?'同房的人會睇到彼此體型、穿搭、移動同訓練。':'連線中斷，正在重試。';
 }
 function showRoom(){
   if(session||startingTraining)return;
@@ -106,7 +111,7 @@ function showRoom(){
     renderRoster();$('#copy-invite').onclick=async()=>{try{await navigator.clipboard.writeText(inviteLink());toast('已複製邀請連結，傳俾朋友就可以加入。');}catch{$('#invite-link').select();toast('請複製已選取的邀請連結。');}};
     $('#leave-room').onclick=async()=>{await net.leave();const url=new URL(location.href);url.searchParams.delete('room');history.replaceState(null,'',url);showRoom();};
   }else{
-    show(`<h2 id="dialog-title">朋友一齊嚟做 gym</h2><p>開一間最多12人嘅房，或者用朋友嘅房間碼加入。</p><label class="room-field">你的名字<input id="nickname" readonly maxlength="16" autocomplete="nickname" value="${safe(nickname())}" placeholder="點稱呼你？"></label><label class="room-field">健身室名稱<input id="room-name" maxlength="24" value="街角健身室" placeholder="幫健身室改個名"></label><div class="actions"><button id="create-room" class="primary">開新房間</button></div><form id="join-room-form"><label class="room-field">朋友的房間碼<input id="room-code" maxlength="6" autocapitalize="characters" spellcheck="false" autocomplete="off" value="${safe(inviteCode())}" placeholder="6位房間碼"></label><button id="join-room" type="submit">加入房間</button></form><p id="room-error" role="status"></p><p class="mini-note">名字會顯示俾同房朋友。訓練成長仍保存喺各自瀏覽器。</p>`,'多人健身室');
+    show(`<h2 id="dialog-title">朋友一齊嚟做 gym</h2><p>開一間最多12人嘅房，或者用朋友嘅房間碼加入。</p><label class="room-field">你的名字<input id="nickname" readonly maxlength="16" autocomplete="nickname" value="${safe(nickname())}" placeholder="點稱呼你？"></label><label class="room-field">健身室名稱<input id="room-name" maxlength="24" value="街角健身室" placeholder="幫健身室改個名"></label><div class="actions"><button id="create-room" class="primary">開新房間</button></div><form id="join-room-form"><label class="room-field">朋友的房間碼<input id="room-code" maxlength="6" autocapitalize="characters" spellcheck="false" autocomplete="off" value="${safe(inviteCode())}" placeholder="6位房間碼"></label><button id="join-room" type="submit">加入房間</button></form><p id="room-error" role="status"></p><p class="mini-note">同房朋友會看見你的名字、體型及已儲存穿搭。訓練成長仍保存在本機。</p>`,'多人健身室');
     const enter=async creating=>{
       const name=nickname(),code=$('#room-code').value.trim().toUpperCase();
     if(!name){$('#room-error').textContent='請先輸入名字。';return;}
@@ -120,7 +125,7 @@ function showRoom(){
     $('#create-room').onclick=()=>enter(true);$('#join-room-form').onsubmit=e=>{e.preventDefault();enter(false);};
   }
 }
-const panelOpen=()=>!dialog.hidden;
+const panelOpen=()=>!dialog.hidden||!!characterUI?.isOpen;
 function syncControls(){
   document.body.dataset.training=String(!!session);
   for(const id of ['courses','profile','friends','emotes','help','presence'])$('#'+id).disabled=!!session||startingTraining;
@@ -164,6 +169,7 @@ function updateUI(){
   $('#goal-count').textContent=`${weekly()} / 8`;
   $('#goal-bar').style.width=`${Math.min(100,weekly()/8*100)}%`;
 
+  characterUI?.refresh();
   $('#save-state').textContent=saveWarning||'本機自動存檔 · 請定期匯出備份';
   $('#member-name').textContent=profile?.name||'本機新玩家';
 }
@@ -176,6 +182,7 @@ function show(content,tag='訓練準備',contextual=false){
   syncControls();$('#close').focus({preventScroll:true});
 }
 function close(){
+  if(characterUI?.isOpen){characterUI.close();return;}
   if(!entered){toast('請先建立或選擇角色入場。');return;}
   if(settling)return;
   if(startingTraining){startGeneration++;hidePanel();return;}
@@ -278,16 +285,17 @@ async function finish(){
   }
 
   const category=session.category;releaseAll();session=null;settling=false;releaseStation();updateUI();
-  show(`<h2 id="dialog-title">${result.qualified?'練好一點，就有進步。':'再試一組，慢慢掌握。'}</h2><div class="result-score">${Math.round(result.score*100)}<small>技巧評分 / 100</small></div><p>${message}</p><div class="reward-list"><div><b>+${reward.xp}</b><span>${names[category]}成長</span></div><div><b>+${reward.xp?1:0}</b><span>器材熟練次數</span></div><div><b>+${reward.contribution}</b><span>本週建設貢獻</span></div></div><div class="actions"><button class="primary" id="back">繼續活動</button><button id="again">再練習一次</button></div>`,'本次訓練成果',true);
-  $('#back').onclick=close;$('#again').onclick=()=>start(true);
+  show(`<h2 id="dialog-title">${result.qualified?'練好一點，就有進步。':'再試一組，慢慢掌握。'}</h2><div class="result-score">${Math.round(result.score*100)}<small>技巧評分 / 100</small></div><p>${message}</p>${reward.xp?`<p>${splitReward(category,reward.xp).map(m=>`${m.name} +${m.xp}`).join(" · ")||"心肺耐力成長"}</p>`:""}<div class="reward-list"><div><b>+${reward.xp}</b><span>${names[category]}成長</span></div><div><b>+${reward.xp?1:0}</b><span>器材熟練次數</span></div><div><b>+${reward.contribution}</b><span>本週建設貢獻</span></div></div><div class="actions"><button class="primary" id="back">繼續活動</button><button id="again">再練習一次</button><button id="view-growth">查看肌群</button></div>`,'本次訓練成果',true);
+  $('#back').onclick=close;$('#again').onclick=()=>start(true);$('#view-growth').onclick=openCharacter;
   $('#welcome').textContent=reward.xp?'今日的努力已經留下，休息一下吧。':'享受練習，找到自己的節奏。';
 }
 $('#help').onclick=()=>{
-  show('<h2 id="dialog-title">街角健身室</h2><p>方向鍵或 WASD 移動，E 使用器材。每日五個角色共用三張券，同類只計一次；自由練習不限次。香港時間每日 04:00 重置。</p><p>角色選擇內可建立最多五個角色、編輯名字及配色、匯出／匯入整份存檔。切換角色會先離開多人房間。角色及進度只保存於此瀏覽器，清除網站資料可能令存檔遺失。</p><p>多人房間最多十二人，暱稱及動作會傳送給同房玩家。無需 Email 或密碼。目前外觀沿用 C01；舊雲端角色保留但不會自動匯入。</p>','玩法說明');
+  show('<h2 id="dialog-title">街角健身室</h2><p>方向鍵或 WASD 移動，E 使用器材。每日五個角色共用三張券，同類只計一次；自由練習不限次。香港時間每日 04:00 重置。</p><p>角色選擇內可建立最多五個角色、編輯名字及配色、匯出／匯入整份存檔。切換角色會先離開多人房間。角色及進度只保存於此瀏覽器，清除網站資料可能令存檔遺失。</p><p>多人房間最多十二人，暱稱及動作會傳送給同房玩家。無需 Email 或密碼。角色頁可查看肌群與五階體型、保存三套穿搭；同房玩家會看到目前外觀。舊雲端角色保留但不會自動匯入。</p>','玩法說明');
 };
 
 const map={w:'up',ArrowUp:'up',s:'down',ArrowDown:'down',a:'left',ArrowLeft:'left',d:'right',ArrowRight:'right'};
 window.addEventListener('keydown',e=>{
+  if(characterUI?.isOpen)return;
   if(e.key==='Escape'){e.preventDefault();if(panelOpen())close();else courses(false);return;}
   if(panelOpen()){
     if(session&&!paused){
@@ -309,7 +317,7 @@ window.addEventListener('blur',()=>{releaseAll();if(session&&!session.done&&!pau
 document.addEventListener('visibilitychange',()=>{if(document.hidden){releaseAll();if(session&&!session.done&&!paused)close();}});
 window.addEventListener('storage',e=>{if(e.key===PROFILE_KEY||e.key===null){
   const oldId=profile?.id,oldCharacter=profile?.activeId,oldName=profile?.name;player=load();
-  if(profile?.id!==oldId||profile?.activeId!==oldCharacter||profile?.name!==oldName){startGeneration++;releaseAll();session=null;settling=false;entered=false;net.leave().catch(networkError);showAccount();}
+  if(profile?.id!==oldId||profile?.activeId!==oldCharacter||profile?.name!==oldName){characterUI?.close();startGeneration++;releaseAll();session=null;settling=false;entered=false;net.leave().catch(networkError);showAccount();}
   else if(accountOpen&&!session)showAccount();updateUI();
 }});
 for(const b of document.querySelectorAll('[data-move]')){
@@ -386,15 +394,15 @@ function roomFrame(dt,time){
   const sorted=[...objects.filter(o=>!o.wall&&(!o.flat||workouts.has(o.stationKey))),...(!session?[{isPlayer:true,y:actor.y}]:[]),
     ...[...remoteMembers.values()].filter(p=>!p.exercise).map(p=>({isRemote:true,member:p,y:p.renderY}))].sort((a,b)=>a.y-b.y);
   for(const o of sorted){
-    if(o.isPlayer){ctx.fillStyle='#222b3455';ctx.beginPath();ctx.ellipse(actor.x,actor.y-2,22,7,0,0,Math.PI*2);ctx.fill();drawActor(ctx,actor.x,actor.y,actor.dir,actor.walk?1+Math.floor(actor.walk*7)%2:0);ctx.fillStyle='#81e8bb';ctx.beginPath();ctx.moveTo(actor.x-6,actor.y-117);ctx.lineTo(actor.x+6,actor.y-117);ctx.lineTo(actor.x,actor.y-110);ctx.fill();nameplate(ctx,localMember,actor.x,actor.y-133,true);}
+    if(o.isPlayer){ctx.fillStyle='#222b3455';ctx.beginPath();ctx.ellipse(actor.x,actor.y-2,22,7,0,0,Math.PI*2);ctx.fill();drawWalkingActor(ctx,actor.x,actor.y,actor.dir,time/1000,actor.walk>0,art,frames,playerLook(player));ctx.fillStyle='#81e8bb';ctx.beginPath();ctx.moveTo(actor.x-6,actor.y-117);ctx.lineTo(actor.x+6,actor.y-117);ctx.lineTo(actor.x,actor.y-110);ctx.fill();nameplate(ctx,localMember,actor.x,actor.y-133,true);}
     else if(o.isRemote){
       const p=o.member;ctx.fillStyle='#222b3455';ctx.beginPath();ctx.ellipse(p.renderX,p.renderY-2,22,7,0,0,Math.PI*2);ctx.fill();
-      drawActor(ctx,p.renderX,p.renderY,p.dir,p.moving?1+Math.floor(time/140)%2:0);nameplate(ctx,p,p.renderX,p.renderY-116);
+      drawWalkingActor(ctx,p.renderX,p.renderY,p.dir,time/1000,p.moving,art,frames,safeLook(p.look));nameplate(ctx,p,p.renderX,p.renderY-116);
       if(p.emote){ctx.font='bold 24px sans-serif';ctx.fillStyle=p.color;ctx.fillText(p.emote,p.renderX,p.renderY-150);}
     }
     else{
       const workout=workouts.get(o.stationKey);
-      if(workout){drawActiveProp(ctx,o);drawExerciseActor(ctx,o,workout.pose,art,frames,workout.self?paused:workout.pose.paused);nameplate(ctx,workout.member,o.x,o.y-137,workout.self);}
+      if(workout){drawActiveProp(ctx,o);drawExerciseActor(ctx,o,workout.pose,art,frames,workout.self?paused:workout.pose.paused,workout.self?playerLook(player):safeLook(workout.member.look));nameplate(ctx,workout.member,o.x,o.y-137,workout.self);}
       else drawProp(ctx,o.type,o.x,o.y,o.w,o.h);
     }
   }
@@ -470,5 +478,11 @@ async function init(){
     }catch(error){networkError(error);if(entered&&!accountOpen&&inviteCode())showRoom();}
   }catch{$('#loading').textContent='素材載入失敗，請重新整理頁面。';}
 }
-$('#profile').onclick=showAccount;
+function openCharacter(){if(session||startingTraining||settling)return;if(!entered){showAccount();return;}releaseAll();route=[];destination=null;hidePanel();courses(false);characterUI.open();}
+characterUI=new EvolutionUI({getPlayer:()=>player,getName:()=>nickname()+' · 角色 '+(profile.characters.findIndex(c=>c.id===profile.activeId)+1),canTrain,accountLabel:()=> '角色選擇／備份',storageLabel:()=> '穿搭隨目前角色保存；匯出備份會包含全部角色衣櫃。',onAccount:showAccount,onTrain:goTo,onClose:syncControls,onSave:async(slot,outfit)=>{
+ const expectedProfile=profile.id,expectedCharacter=profile.activeId;
+ const next=await profiles.saveAppearance(expectedProfile,expectedCharacter,slot,outfit);
+ profileChanged(next);if(net.session)net.syncNow().catch(networkError);
+}});
+$('#profile').onclick=openCharacter;
 setInterval(updateUI,10000);showAccount();init();

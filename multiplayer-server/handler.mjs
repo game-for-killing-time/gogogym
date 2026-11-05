@@ -1,4 +1,5 @@
 import {objects, blocked} from '../src/room.mjs';
+import {DEFAULT_LOOK,validateLook} from '../src/appearance-model.mjs';
 
 export const CAPACITY=12, PLAYER_TTL=20_000, ROOM_TTL=24*60*60*1000;
 export const COLORS=['#81e8bb','#f2c28e','#a9c9f5','#efb4c3','#d6c2f4','#eee69e','#9edbd8','#e9aa80','#c4dd97','#b9c6e8','#d3b49c','#b8e3ce'];
@@ -13,6 +14,7 @@ const first=(db,sql,...args)=>statement(db,sql,...args).first();
 const run=(db,sql,...args)=>statement(db,sql,...args).run();
 const changes=result=>Number(result.meta?.changes??result.changes??0);
 const cutoff=now=>now-PLAYER_TTL;
+function lookOf(raw,previous=null){if(raw===undefined)return previous?JSON.parse(previous):DEFAULT_LOOK;try{return validateLook(raw);}catch{fail(400,'INVALID_LOOK','角色外觀不正確，請重新選擇已擁有的衣物。');}}
 const newToken=()=>crypto.randomUUID()+crypto.randomUUID();
 const hash=async token=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',encoder.encode(token))),v=>v.toString(16).padStart(2,'0')).join('');
 function roomCode(){const a=new Uint8Array(6);crypto.getRandomValues(a);return Array.from(a,v=>'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[v%32]).join('');}
@@ -45,7 +47,7 @@ function stateOf(state,player){
     if(!phases[s.id].includes(e.phase))fail(400,'INVALID_STATE','訓練階段不正確。');
     exercise={stationKey:s.stationKey,category:s.id,time:finite(e.time,0,3600,'時間'),phase:e.phase,rep:integer(e.rep??0,0,6,'次數'),height:finite(e.height??0,0,1,'動作'),extension:finite(e.extension??0,0,1,'動作'),depth:finite(e.depth??0,0,1,'動作'),balance:finite(e.balance??0,-1,1,'重心'),sprint:e.sprint===true,paused:e.paused===true};
   }
-  return {x,y,dir,moving:state.moving,emote,exercise};
+  return {x,y,dir,moving:state.moving,emote,exercise,look:lookOf(state.look,player.look_json)};
 }
 function initialExercise(s){return {stationKey:s.stationKey,category:s.id,time:0,phase:phases[s.id][0],rep:0,height:0,extension:0,depth:0,balance:0,sprint:false,paused:false};}
 async function readBody(request){
@@ -70,14 +72,14 @@ async function member(db,code,token,now,allowExpired=false){
   return p;
 }
 export async function getSnapshot(db,code,now=Date.now()){
-  const result=await statement(db,'SELECT id,name,color,x,y,dir,moving,station_key,exercise_json,emote,emote_until FROM gym_players WHERE room_code = ? AND seen_at > ? ORDER BY joined_at,id',code,cutoff(now)).all();
+  const result=await statement(db,'SELECT id,name,color,x,y,dir,moving,station_key,exercise_json,emote,emote_until,look_json FROM gym_players WHERE room_code = ? AND seen_at > ? ORDER BY joined_at,id',code,cutoff(now)).all();
   const gym=await first(db,'SELECT name FROM gym_rooms WHERE code = ?',code);
-  return {roomCode:code,roomName:gym?.name||'街角健身室',capacity:CAPACITY,serverTime:now,players:result.results.map(p=>({id:p.id,name:p.name,color:p.color,x:p.x,y:p.y,dir:p.dir,moving:!!p.moving,emote:p.emote_until>now?p.emote:'',exercise:p.station_key&&p.exercise_json?JSON.parse(p.exercise_json):null,connected:true}))};
+  return {roomCode:code,roomName:gym?.name||'街角健身室',capacity:CAPACITY,serverTime:now,players:result.results.map(p=>({id:p.id,name:p.name,color:p.color,x:p.x,y:p.y,dir:p.dir,moving:!!p.moving,emote:p.emote_until>now?p.emote:'',exercise:p.station_key&&p.exercise_json?JSON.parse(p.exercise_json):null,look:lookOf(undefined,p.look_json),connected:true}))};
 }
-async function addMember(db,code,name,now){
+async function addMember(db,code,name,now,look){
   const token=newToken(),id=crypto.randomUUID(),color=COLORS[Math.floor(Math.random()*COLORS.length)];
-  const inserted=await run(db,`INSERT INTO gym_players(id,room_code,token_hash,name,color,seen_at,joined_at)
-    SELECT ?,?,?,?,?,?,? WHERE (SELECT COUNT(*) FROM gym_players WHERE room_code = ? AND seen_at > ?) < ?`,id,code,await hash(token),name,color,now,now,code,cutoff(now),CAPACITY);
+  const inserted=await run(db,`INSERT INTO gym_players(id,room_code,token_hash,name,color,seen_at,joined_at,look_json)
+    SELECT ?,?,?,?,?,?,?,? WHERE (SELECT COUNT(*) FROM gym_players WHERE room_code = ? AND seen_at > ?) < ?`,id,code,await hash(token),name,color,now,now,JSON.stringify(look),code,cutoff(now),CAPACITY);
   if(!changes(inserted))fail(409,'ROOM_FULL','房間已滿 12 人，請稍後再加入。');
   return {roomCode:code,playerId:id,token,seq:-1,snapshot:await getSnapshot(db,code,now)};
 }
@@ -91,12 +93,12 @@ export async function handleMultiplayer(request,db,options={}){
     if(origin&&origin!==url.origin)fail(403,'ORIGIN_REJECTED','此房間只接受同一網站的請求。');
     const body=await readBody(request),now=options.now?options.now():Date.now();
     if(pathname==='/api/rooms'){
-      const name=nameOf(body.name),roomName=gymNameOf(body.roomName);
+      const name=nameOf(body.name),roomName=gymNameOf(body.roomName),look=lookOf(body.look);
       await run(db,'DELETE FROM gym_rooms WHERE code IN (SELECT code FROM gym_rooms WHERE expires_at <= ? LIMIT 10)',now);
       if((await first(db,'SELECT COUNT(*) AS total FROM gym_rooms')).total>=1000)fail(503,'SERVER_BUSY','房間暫時已滿，請稍後再試。');
       for(let attempt=0;attempt<6;attempt++){
         const code=roomCode(),made=await run(db,'INSERT OR IGNORE INTO gym_rooms(code,created_at,expires_at,name) VALUES(?,?,?,?)',code,now,now+ROOM_TTL,roomName);
-        if(changes(made))return response(await addMember(db,code,name,now),201);
+        if(changes(made))return response(await addMember(db,code,name,now,look),201);
       }
       fail(503,'SERVER_BUSY','暫時未能建立房間，請稍後再試。');
     }
@@ -106,14 +108,14 @@ export async function handleMultiplayer(request,db,options={}){
     if(action==='join'){
       if(body.token){
         const p=await member(db,code,body.token,now,true),expired=p.seen_at<=cutoff(now);
-        const renewed=await run(db,`UPDATE gym_players SET seen_at=?,moving=0,
+        const renewed=await run(db,`UPDATE gym_players SET seen_at=?,moving=0,look_json=?,
           station_key=CASE WHEN seen_at<=? THEN NULL ELSE station_key END,
           exercise_json=CASE WHEN seen_at<=? THEN NULL ELSE exercise_json END
-          WHERE id=? AND token_hash=? AND (seen_at > ? OR (SELECT COUNT(*) FROM gym_players WHERE room_code=? AND seen_at>?) < ?)`,now,cutoff(now),cutoff(now),p.id,p.token_hash,cutoff(now),code,cutoff(now),CAPACITY);
+          WHERE id=? AND token_hash=? AND (seen_at > ? OR (SELECT COUNT(*) FROM gym_players WHERE room_code=? AND seen_at>?) < ?)`,now,JSON.stringify(lookOf(body.look,p.look_json)),cutoff(now),cutoff(now),p.id,p.token_hash,cutoff(now),code,cutoff(now),CAPACITY);
         if(!changes(renewed))fail(409,'ROOM_FULL','房間已滿 12 人，請稍後再加入。');
         return response({roomCode:code,playerId:p.id,token:body.token,seq:p.seq,resumed:true,expired,snapshot:await getSnapshot(db,code,now)});
       }
-      return response(await addMember(db,code,nameOf(body.name),now),201);
+      return response(await addMember(db,code,nameOf(body.name),now,lookOf(body.look)),201);
     }
     const p=await member(db,code,body.token,now,action==='leave');
     if(action==='leave'){
@@ -133,10 +135,10 @@ export async function handleMultiplayer(request,db,options={}){
     const seq=integer(body.seq,0,Number.MAX_SAFE_INTEGER,'同步次序');
     if(seq<=p.seq)return response({snapshot:await getSnapshot(db,code,now)});
     const state=stateOf(body.state,p),newEmote=state.emote&&state.emote!==p.emote_input;
-    const result=await run(db,`UPDATE gym_players SET x=?,y=?,dir=?,moving=?,seq=?,seen_at=?,
+    const result=await run(db,`UPDATE gym_players SET x=?,y=?,dir=?,moving=?,seq=?,seen_at=?,look_json=?,
       exercise_json=CASE WHEN station_key IS ? THEN ? ELSE exercise_json END,
       emote=?,emote_until=?,emote_input=? WHERE id=? AND token_hash=? AND seq<? AND seen_at>?`,
-      state.x,state.y,state.dir,state.exercise?0:Number(state.moving),seq,now,p.station_key,
+      state.x,state.y,state.dir,state.exercise?0:Number(state.moving),seq,now,JSON.stringify(state.look),p.station_key,
       state.exercise?JSON.stringify(state.exercise):p.exercise_json,
       state.emote?state.emote:'',newEmote?now+3000:p.emote_until,state.emote,p.id,p.token_hash,seq,cutoff(now));
     if(!changes(result))await member(db,code,body.token,now);

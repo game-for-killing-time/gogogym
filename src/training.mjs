@@ -46,6 +46,8 @@ export function completeTraining(player, { id, category, score, now, practice = 
   if (!next.weekly.days.includes(keys.day)) next.weekly.days.push(keys.day);
   if (!next.weekly.categories.includes(category)) next.weekly.categories.push(category);
   next.weekly.contributions += contribution;
+  next.lastTraining = {category, xp, at: new Date(now).toISOString()};
+  next.completedWeeks = [...new Set([...(Array.isArray(next.completedWeeks)?next.completedWeeks:[]), ...(next.weekly.days.length>=4?[keys.week]:[])])];
   const reward = { xp, contribution };
   Object.defineProperty(next.receipts, id, { value: reward, enumerable: true, configurable: true, writable: true });
   return { player: next, reward, status: 'completed' };

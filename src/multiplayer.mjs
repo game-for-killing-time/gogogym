@@ -142,7 +142,7 @@ export class MultiplayerClient {
       this._snapshot = null;
       this._setStatus('connecting');
       try {
-        const body = { name: this._name };
+        const body = { name: this._name, look: this.getState().look };
         if (roomCode === null && roomName !== undefined) body.roomName = roomName;
         if (saved) body.token = saved.token;
         const data = await this._request(roomCode ? `/api/rooms/${roomCode}/join` : '/api/rooms', body);
@@ -211,7 +211,7 @@ export class MultiplayerClient {
         if (error.code === 'SESSION_EXPIRED') {
           this._setStatus('reconnecting');
           try {
-            const data = await this._request(`/api/rooms/${session.roomCode}/join`, { name: this._name, token: session.token });
+            const data = await this._request(`/api/rooms/${session.roomCode}/join`, { name: this._name, token: session.token, look: this.getState().look });
             if (this._adopt(data, epoch)) return this._snapshot;
             return null;
           } catch (resumeError) { this._failed(resumeError, epoch); throw resumeError; }

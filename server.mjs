@@ -9,7 +9,7 @@ import {createFirebaseVerifier} from './account-server/auth.mjs';
 import firebaseConfig from './firebase-web.json' with {type:'json'};
 
 const root=fileURLToPath(new URL('.',import.meta.url));
-const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.js':'text/javascript; charset=utf-8','.png':'image/png','.jpg':'image/jpeg','.json':'application/json'};
+const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.js':'text/javascript; charset=utf-8','.png':'image/png','.jpg':'image/jpeg','.svg':'image/svg+xml','.json':'application/json'};
 export function createGymServer(options={}){
   const db=options.db??createLocalDatabase(),rate=new Map();
   const config=options.firebaseConfig??(process.env.FIREBASE_WEB_CONFIG?JSON.parse(process.env.FIREBASE_WEB_CONFIG):firebaseConfig);
