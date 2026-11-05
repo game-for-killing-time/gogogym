@@ -25,6 +25,18 @@ let view={scale:1,x:0,y:0}, viewport={width:1200,height:675}, emote='',emoteUnti
 let goalExpanded=true;
 let startingTraining=false,startGeneration=0,localMember=null,lastNetworkStatus='offline';
 let accountOpen=false,accountUid=null,settling=false,trainingTrace=[],trainingSteps=0,stepRemainder=0;
+let welcomeOpen=false;
+const welcomeKey='pixel-gym.welcome.v1';
+function rememberWelcome(){try{localStorage.setItem(welcomeKey,'seen');}catch{}}
+function firstVisit(){try{return !localStorage.getItem(welcomeKey);}catch{return true;}}
+function enterGuest(){rememberWelcome();welcomeOpen=false;hidePanel();if(inviteCode()&&!net.session)showRoom();}
+function showWelcome(){
+  show('<div class="account-heading"><div class="portrait"><img src="assets/runtime/c01-walk-v1.png" alt="C01 棕髮角色"></div><div><small>街角健身室 · 初次見面</small><h2 id="dialog-title">今日，一齊練。</h2></div></div><p>每日揀三款訓練，慢慢養成你嘅角色。<br>亦可以開房，邀請朋友一齊入場。</p><div class="welcome-choices"><button id="welcome-login" class="primary">登入／建立角色</button><p>保存雲端進度，換裝置都可以繼續。</p><button id="welcome-guest">訪客試玩</button><p>先逛逛健身室，進度只保存在此瀏覽器。</p></div>','歡迎入場');
+  welcomeOpen=true;
+  $('#welcome-login').onclick=()=>{rememberWelcome();showAccount();};
+  $('#welcome-guest').onclick=enterGuest;
+  $('#welcome-login').focus({preventScroll:true});
+}
 const account=new AccountClient(accountChanged);
 function accountChanged(){
   const uid=account.user?.uid||null;
@@ -36,6 +48,7 @@ function accountChanged(){
   document.documentElement.style.setProperty('--member-accent',account.character?.accent||'#c2ccaf');
   $('#member-name').textContent=account.character?.name||localMember?.name||'街角新會員';
   updateUI();if(accountOpen)showAccount();
+  else if(welcomeOpen&&account.user&&!account.loading){rememberWelcome();if(account.character)enterGuest();else showAccount();}
 }
 function showAccount(){
   if(session||startingTraining||settling)return;
@@ -123,18 +136,19 @@ function showRoom(){
 const panelOpen=()=>!dialog.hidden;
 function syncControls(){
   document.body.dataset.training=String(!!session);
-  for(const id of ['courses','profile','friends','emotes','help','presence'])$('#'+id).disabled=!!session||startingTraining;
+  for(const id of ['courses','profile','friends','emotes','help','presence','account-main'])$('#'+id).disabled=!!session||startingTraining;
   $('#goal-content').hidden=!goalExpanded||!!session;
   $('#toggle-goal').disabled=!!session;
   $('#toggle-goal').setAttribute('aria-expanded',String(!$('#goal-content').hidden));
   $('#goal-toggle-icon').textContent=$('#goal-content').hidden?'+':'−';
 }
-function hidePanel(){accountOpen=false;dialog.hidden=true;dialog.style.left='';dialog.style.top='';syncControls();canvas.focus();}
+function hidePanel(){welcomeOpen=false;accountOpen=false;dialog.hidden=true;dialog.style.left='';dialog.style.top='';syncControls();canvas.focus();}
 function courses(open){$('#courses-panel').hidden=!open;$('#courses').setAttribute('aria-expanded',String(open));}
 $('#courses').onclick=()=>{if(session)return;hidePanel();courses($('#courses-panel').hidden);};
 $('#close-courses').onclick=()=>{courses(false);$('#courses').focus();};
 $('#toggle-goal').onclick=()=>{goalExpanded=!goalExpanded;syncControls();};
 $('#friends').onclick=$('#presence').onclick=showRoom;
+$('#account-main').onclick=()=>{rememberWelcome();showAccount();};
 $('#emotes').onclick=()=>{
   show('<h2 id="dialog-title">打個招呼</h2><div class="emote-options"><button data-emote="☺" aria-label="微笑">☺</button><button data-emote="♡" aria-label="愛心">♡</button><button data-emote="✦" aria-label="加油">✦</button></div>','表情');
   for(const b of document.querySelectorAll('[data-emote]'))b.onclick=()=>{emote=b.dataset.emote;emoteUntil=performance.now()+3000;hidePanel();};
@@ -157,6 +171,7 @@ function daily(){return player.daily.key===periodKeys(Date.now()+account.offset)
 function weekly(){return player.weekly.key===periodKeys(Date.now()+account.offset).week?player.weekly.contributions:0;}
 function canTrain(category){return (!account.user||!!account.character)&&daily().length<3&&!daily().includes(category);}
 function updateUI(){
+  $('#account-main').textContent=account.user?(account.character?'我的會員角色':'建立角色'):'登入／建立角色';
   const count=3-daily().length;
   $('#tickets').textContent=`${count} / 3`;
   $('#daily-count').textContent=`${daily().length} / 3`;
@@ -174,13 +189,14 @@ function updateUI(){
 }
 function toast(message){$('#toast').textContent=message;$('#toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,3600);}
 function show(content,tag='訓練準備',contextual=false){
-  accountOpen=false;
+  welcomeOpen=false;accountOpen=false;
   keys.clear();route=[];destination=null;$('#dialog-tag').textContent=tag;$('#dialog-body').innerHTML=content;
   courses(false);dialog.hidden=false;dialog.dataset.context=String(contextual);dialog.classList.toggle('contextual',contextual);
   if(!contextual){dialog.style.left='';dialog.style.top='';}
   syncControls();$('#close').focus({preventScroll:true});
 }
 function close(){
+  if(welcomeOpen){enterGuest();return;}
   if(settling)return;
   if(startingTraining){startGeneration++;hidePanel();return;}
   if(session&&!session.done){
@@ -470,11 +486,11 @@ async function init(){
       const restored=await net.restore();
       if(restored&&inviteCode()&&net.session.roomCode!==inviteCode())await net.leave();
       else if(restored){await net.release();if(localMember){actor.x=localMember.x;actor.y=localMember.y;}toast('已返回共享健身室。');}
-      if(inviteCode()&&(!net.session||net.session.roomCode!==inviteCode()))showRoom();
-    }catch(error){networkError(error);if(inviteCode())showRoom();}
+      if(!welcomeOpen&&!accountOpen&&inviteCode()&&(!net.session||net.session.roomCode!==inviteCode()))showRoom();
+    }catch(error){networkError(error);if(!welcomeOpen&&!accountOpen&&inviteCode())showRoom();}
   }catch{$('#loading').textContent='素材載入失敗，請重新整理頁面。';}
 }
 const showStats=$('#profile').onclick;
 $('#profile').onclick=()=>{showStats();const b=document.createElement('button');b.className='primary account-entry';b.textContent=account.user?'會員角色／帳戶':'登入／建立角色';b.onclick=showAccount;$('#dialog-body').prepend(b);};
-setInterval(updateUI,10000);init();account.init();
+setInterval(updateUI,10000);if(firstVisit())showWelcome();init();account.init();
 
