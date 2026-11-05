@@ -1,0 +1,371 @@
+[
+  {
+    "id": "panel",
+    "label": "詳情面板",
+    "file": "ui/panel.svg",
+    "width": 480,
+    "height": 560,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "ribbon",
+    "label": "進化路線底板",
+    "file": "ui/ribbon.svg",
+    "width": 1000,
+    "height": 180,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "button-default",
+    "label": "一般按鈕",
+    "file": "ui/button-default.svg",
+    "width": 280,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "button-primary",
+    "label": "主要按鈕",
+    "file": "ui/button-primary.svg",
+    "width": 280,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "button-hover",
+    "label": "懸停按鈕",
+    "file": "ui/button-hover.svg",
+    "width": 280,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "button-pressed",
+    "label": "按下按鈕",
+    "file": "ui/button-pressed.svg",
+    "width": 280,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "button-disabled",
+    "label": "停用按鈕",
+    "file": "ui/button-disabled.svg",
+    "width": 280,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "item-tile",
+    "label": "物品底板",
+    "file": "ui/item-tile.svg",
+    "width": 240,
+    "height": 240,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "item-selected",
+    "label": "選取物品底板",
+    "file": "ui/item-selected.svg",
+    "width": 240,
+    "height": 240,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "muscle-chip",
+    "label": "肌群標籤底板",
+    "file": "ui/muscle-chip.svg",
+    "width": 240,
+    "height": 56,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "muscle-chip-selected",
+    "label": "已選肌群底板",
+    "file": "ui/muscle-chip-selected.svg",
+    "width": 240,
+    "height": 56,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "stage-badge",
+    "label": "階段標章",
+    "file": "ui/stage-badge.svg",
+    "width": 128,
+    "height": 44,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "progress-track",
+    "label": "進度條底",
+    "file": "ui/progress-track.svg",
+    "width": 400,
+    "height": 24,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "progress-fill",
+    "label": "進度條填色（以裁切控制數值）",
+    "file": "ui/progress-fill.svg",
+    "width": 400,
+    "height": 24,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "selection-ring",
+    "label": "肌群選取點",
+    "file": "ui/selection-ring.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-back",
+    "label": "back",
+    "file": "ui/icon-back.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-close",
+    "label": "close",
+    "file": "ui/icon-close.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-check",
+    "label": "check",
+    "file": "ui/icon-check.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-lock",
+    "label": "lock",
+    "file": "ui/icon-lock.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-rotate",
+    "label": "rotate",
+    "file": "ui/icon-rotate.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-hanger",
+    "label": "hanger",
+    "file": "ui/icon-hanger.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-top",
+    "label": "top",
+    "file": "ui/icon-top.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-bottoms",
+    "label": "bottoms",
+    "file": "ui/icon-bottoms.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-shoes",
+    "label": "shoes",
+    "file": "ui/icon-shoes.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-accessories",
+    "label": "accessories",
+    "file": "ui/icon-accessories.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-dumbbell",
+    "label": "dumbbell",
+    "file": "ui/icon-dumbbell.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-info",
+    "label": "info",
+    "file": "ui/icon-info.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-sparkle",
+    "label": "sparkle",
+    "file": "ui/icon-sparkle.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-heart",
+    "label": "heart",
+    "file": "ui/icon-heart.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-front",
+    "label": "front",
+    "file": "ui/icon-front.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "icon-backview",
+    "label": "backview",
+    "file": "ui/icon-backview.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "svg-ui",
+    "status": "editable"
+  },
+  {
+    "id": "muscle-chest",
+    "label": "胸肌",
+    "file": "muscles/chest.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "muscle-icon",
+    "status": "schematic-not-anatomical-mask"
+  },
+  {
+    "id": "muscle-shoulder",
+    "label": "肩部",
+    "file": "muscles/shoulder.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "muscle-icon",
+    "status": "schematic-not-anatomical-mask"
+  },
+  {
+    "id": "muscle-biceps",
+    "label": "二頭肌",
+    "file": "muscles/biceps.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "muscle-icon",
+    "status": "schematic-not-anatomical-mask"
+  },
+  {
+    "id": "muscle-triceps",
+    "label": "三頭肌",
+    "file": "muscles/triceps.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "muscle-icon",
+    "status": "schematic-not-anatomical-mask"
+  },
+  {
+    "id": "muscle-core",
+    "label": "腹／核心",
+    "file": "muscles/core.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "muscle-icon",
+    "status": "schematic-not-anatomical-mask"
+  },
+  {
+    "id": "muscle-back",
+    "label": "背肌",
+    "file": "muscles/back.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "muscle-icon",
+    "status": "schematic-not-anatomical-mask"
+  },
+  {
+    "id": "muscle-glutes",
+    "label": "臀部",
+    "file": "muscles/glutes.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "muscle-icon",
+    "status": "schematic-not-anatomical-mask"
+  },
+  {
+    "id": "muscle-quads",
+    "label": "大腿前側",
+    "file": "muscles/quads.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "muscle-icon",
+    "status": "schematic-not-anatomical-mask"
+  },
+  {
+    "id": "muscle-hamstrings",
+    "label": "大腿後側",
+    "file": "muscles/hamstrings.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "muscle-icon",
+    "status": "schematic-not-anatomical-mask"
+  },
+  {
+    "id": "muscle-calves",
+    "label": "小腿",
+    "file": "muscles/calves.svg",
+    "width": 64,
+    "height": 64,
+    "kind": "muscle-icon",
+    "status": "schematic-not-anatomical-mask"
+  }
+]

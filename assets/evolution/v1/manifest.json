@@ -1,0 +1,1089 @@
+{
+  "version": 1,
+  "date": "2026-11-05",
+  "character": "C01",
+  "assets": [
+    {
+      "id": "c01-stage-01-back",
+      "label": "C01 1 起步 背面",
+      "file": "characters/c01-stage-01-back.png",
+      "width": 1024,
+      "height": 1536,
+      "kind": "characters",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.783,
+      "solidBounds": [
+        284,
+        172,
+        737,
+        1408
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        510,
+        1408
+      ],
+      "edgeClear": true,
+      "usage": "static-portrait-not-animation"
+    },
+    {
+      "id": "c01-stage-01-front",
+      "label": "C01 1 起步 正面",
+      "file": "characters/c01-stage-01-front.png",
+      "width": 1024,
+      "height": 1536,
+      "kind": "characters",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.7752,
+      "solidBounds": [
+        288,
+        208,
+        736,
+        1421
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        512,
+        1421
+      ],
+      "edgeClear": true,
+      "usage": "static-portrait-not-animation"
+    },
+    {
+      "id": "c01-stage-02-back",
+      "label": "C01 2 精實 背面",
+      "file": "characters/c01-stage-02-back.png",
+      "width": 1024,
+      "height": 1536,
+      "kind": "characters",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.758,
+      "solidBounds": [
+        251,
+        168,
+        758,
+        1405
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        504,
+        1405
+      ],
+      "edgeClear": true,
+      "usage": "static-portrait-not-animation"
+    },
+    {
+      "id": "c01-stage-02-front",
+      "label": "C01 2 精實 正面",
+      "file": "characters/c01-stage-02-front.png",
+      "width": 1024,
+      "height": 1536,
+      "kind": "characters",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.7532,
+      "solidBounds": [
+        249,
+        170,
+        762,
+        1407
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        506,
+        1407
+      ],
+      "edgeClear": true,
+      "usage": "static-portrait-not-animation"
+    },
+    {
+      "id": "c01-stage-03-back",
+      "label": "C01 3 結實 背面",
+      "file": "characters/c01-stage-03-back.png",
+      "width": 1024,
+      "height": 1536,
+      "kind": "characters",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.7533,
+      "solidBounds": [
+        243,
+        172,
+        758,
+        1406
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        500,
+        1406
+      ],
+      "edgeClear": true,
+      "usage": "static-portrait-not-animation"
+    },
+    {
+      "id": "c01-stage-03-front",
+      "label": "C01 3 結實 正面",
+      "file": "characters/c01-stage-03-front.png",
+      "width": 1024,
+      "height": 1536,
+      "kind": "characters",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.7428,
+      "solidBounds": [
+        246,
+        172,
+        767,
+        1408
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        506,
+        1408
+      ],
+      "edgeClear": true,
+      "usage": "static-portrait-not-animation"
+    },
+    {
+      "id": "c01-stage-03-street-jacket-back",
+      "label": "C01 3 結實 街角外套 背面",
+      "file": "characters/c01-stage-03-street-jacket-back.png",
+      "width": 1024,
+      "height": 1536,
+      "kind": "characters",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.7521,
+      "solidBounds": [
+        244,
+        169,
+        758,
+        1407
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        501,
+        1407
+      ],
+      "edgeClear": true,
+      "usage": "static-portrait-not-animation"
+    },
+    {
+      "id": "c01-stage-03-street-jacket-front",
+      "label": "C01 3 結實 街角外套 正面",
+      "file": "characters/c01-stage-03-street-jacket-front.png",
+      "width": 1024,
+      "height": 1536,
+      "kind": "characters",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.7305,
+      "solidBounds": [
+        247,
+        171,
+        765,
+        1407
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        506,
+        1407
+      ],
+      "edgeClear": true,
+      "usage": "static-portrait-not-animation"
+    },
+    {
+      "id": "c01-stage-04-back",
+      "label": "C01 4 壯碩 背面",
+      "file": "characters/c01-stage-04-back.png",
+      "width": 1024,
+      "height": 1536,
+      "kind": "characters",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.7384,
+      "solidBounds": [
+        228,
+        175,
+        788,
+        1406
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        508,
+        1406
+      ],
+      "edgeClear": true,
+      "usage": "static-portrait-not-animation"
+    },
+    {
+      "id": "c01-stage-04-front",
+      "label": "C01 4 壯碩 正面",
+      "file": "characters/c01-stage-04-front.png",
+      "width": 1024,
+      "height": 1536,
+      "kind": "characters",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.7127,
+      "solidBounds": [
+        212,
+        174,
+        802,
+        1408
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        507,
+        1408
+      ],
+      "edgeClear": true,
+      "usage": "static-portrait-not-animation"
+    },
+    {
+      "id": "c01-stage-05-back",
+      "label": "C01 5 大隻佬 背面",
+      "file": "characters/c01-stage-05-back.png",
+      "width": 1024,
+      "height": 1536,
+      "kind": "characters",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.6872,
+      "solidBounds": [
+        173,
+        169,
+        843,
+        1406
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        508,
+        1406
+      ],
+      "edgeClear": true,
+      "usage": "static-portrait-not-animation"
+    },
+    {
+      "id": "c01-stage-05-front",
+      "label": "C01 5 大隻佬 正面",
+      "file": "characters/c01-stage-05-front.png",
+      "width": 1024,
+      "height": 1536,
+      "kind": "characters",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentFraction": 0.6444,
+      "solidBounds": [
+        131,
+        172,
+        873,
+        1420
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        502,
+        1420
+      ],
+      "edgeClear": true,
+      "usage": "static-portrait-not-animation"
+    },
+    {
+      "id": "accessory-01-headband",
+      "label": "頭帶",
+      "file": "wardrobe/accessory-01-headband.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "wardrobe",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.7678,
+      "solidBounds": [
+        160,
+        418,
+        1090,
+        893
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        625,
+        893
+      ],
+      "edgeClear": true,
+      "usage": "inventory-icon-not-wearable-layer"
+    },
+    {
+      "id": "accessory-02-wristbands",
+      "label": "護腕",
+      "file": "wardrobe/accessory-02-wristbands.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "wardrobe",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.772,
+      "solidBounds": [
+        183,
+        431,
+        1070,
+        866
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        626,
+        866
+      ],
+      "edgeClear": true,
+      "usage": "inventory-icon-not-wearable-layer"
+    },
+    {
+      "id": "accessory-03-towel",
+      "label": "運動毛巾",
+      "file": "wardrobe/accessory-03-towel.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "wardrobe",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.6703,
+      "solidBounds": [
+        222,
+        287,
+        1031,
+        971
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        626,
+        971
+      ],
+      "edgeClear": true,
+      "usage": "inventory-icon-not-wearable-layer"
+    },
+    {
+      "id": "bottom-01-navy-shorts",
+      "label": "深藍短褲",
+      "file": "wardrobe/bottom-01-navy-shorts.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "wardrobe",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.6761,
+      "solidBounds": [
+        178,
+        301,
+        1069,
+        989
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        624,
+        989
+      ],
+      "edgeClear": true,
+      "usage": "inventory-icon-not-wearable-layer"
+    },
+    {
+      "id": "bottom-02-training-joggers",
+      "label": "訓練長褲",
+      "file": "wardrobe/bottom-02-training-joggers.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "wardrobe",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.7352,
+      "solidBounds": [
+        364,
+        137,
+        890,
+        1114
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        627,
+        1114
+      ],
+      "edgeClear": true,
+      "usage": "inventory-icon-not-wearable-layer"
+    },
+    {
+      "id": "bottom-03-light-shorts",
+      "label": "淺色短褲",
+      "file": "wardrobe/bottom-03-light-shorts.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "wardrobe",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.6526,
+      "solidBounds": [
+        164,
+        285,
+        1083,
+        1009
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        624,
+        1009
+      ],
+      "edgeClear": true,
+      "usage": "inventory-icon-not-wearable-layer"
+    },
+    {
+      "id": "shoes-01-white-trainers",
+      "label": "白色運動鞋",
+      "file": "wardrobe/shoes-01-white-trainers.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "wardrobe",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.7275,
+      "solidBounds": [
+        162,
+        316,
+        1111,
+        988
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        636,
+        988
+      ],
+      "edgeClear": true,
+      "usage": "inventory-icon-not-wearable-layer"
+    },
+    {
+      "id": "shoes-02-navy-runners",
+      "label": "深藍跑鞋",
+      "file": "wardrobe/shoes-02-navy-runners.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "wardrobe",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.7679,
+      "solidBounds": [
+        192,
+        350,
+        1061,
+        962
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        626,
+        962
+      ],
+      "edgeClear": true,
+      "usage": "inventory-icon-not-wearable-layer"
+    },
+    {
+      "id": "top-01-basic-tank",
+      "label": "基本背心",
+      "file": "wardrobe/top-01-basic-tank.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "wardrobe",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.709,
+      "solidBounds": [
+        315,
+        194,
+        937,
+        1048
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        626,
+        1048
+      ],
+      "edgeClear": true,
+      "usage": "inventory-icon-not-wearable-layer"
+    },
+    {
+      "id": "top-02-street-jacket",
+      "label": "街角外套",
+      "file": "wardrobe/top-02-street-jacket.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "wardrobe",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.6382,
+      "solidBounds": [
+        150,
+        214,
+        1098,
+        985
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        624,
+        985
+      ],
+      "edgeClear": true,
+      "usage": "inventory-icon-not-wearable-layer"
+    },
+    {
+      "id": "top-03-power-tank",
+      "label": "力量背心",
+      "file": "wardrobe/top-03-power-tank.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "wardrobe",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.6704,
+      "solidBounds": [
+        287,
+        202,
+        967,
+        1077
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        627,
+        1077
+      ],
+      "edgeClear": true,
+      "usage": "inventory-icon-not-wearable-layer"
+    },
+    {
+      "id": "top-04-coral-tee",
+      "label": "珊瑚短袖",
+      "file": "wardrobe/top-04-coral-tee.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "wardrobe",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.7101,
+      "solidBounds": [
+        183,
+        259,
+        1071,
+        998
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        627,
+        998
+      ],
+      "edgeClear": true,
+      "usage": "inventory-icon-not-wearable-layer"
+    },
+    {
+      "id": "top-05-night-jacket",
+      "label": "夜跑外套",
+      "file": "wardrobe/top-05-night-jacket.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "wardrobe",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.6905,
+      "solidBounds": [
+        190,
+        247,
+        1065,
+        997
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        628,
+        997
+      ],
+      "edgeClear": true,
+      "usage": "inventory-icon-not-wearable-layer"
+    },
+    {
+      "id": "top-06-varsity-jacket",
+      "label": "會員紀念外套",
+      "file": "wardrobe/top-06-varsity-jacket.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "wardrobe",
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentFraction": 0.6254,
+      "solidBounds": [
+        150,
+        221,
+        1104,
+        1033
+      ],
+      "hasTransparency": true,
+      "anchorPixels": [
+        627,
+        1033
+      ],
+      "edgeClear": true,
+      "usage": "inventory-icon-not-wearable-layer"
+    },
+    {
+      "id": "locker-room-empty",
+      "label": "更衣室空背景",
+      "file": "backgrounds/locker-room-empty.png",
+      "width": 1672,
+      "height": 941,
+      "kind": "backgrounds",
+      "mode": "RGB",
+      "hasTransparency": false,
+      "usage": "background"
+    },
+    {
+      "id": "panel",
+      "label": "詳情面板",
+      "file": "ui/panel.svg",
+      "width": 480,
+      "height": 560,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "ribbon",
+      "label": "進化路線底板",
+      "file": "ui/ribbon.svg",
+      "width": 1000,
+      "height": 180,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "button-default",
+      "label": "一般按鈕",
+      "file": "ui/button-default.svg",
+      "width": 280,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "button-primary",
+      "label": "主要按鈕",
+      "file": "ui/button-primary.svg",
+      "width": 280,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "button-hover",
+      "label": "懸停按鈕",
+      "file": "ui/button-hover.svg",
+      "width": 280,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "button-pressed",
+      "label": "按下按鈕",
+      "file": "ui/button-pressed.svg",
+      "width": 280,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "button-disabled",
+      "label": "停用按鈕",
+      "file": "ui/button-disabled.svg",
+      "width": 280,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "item-tile",
+      "label": "物品底板",
+      "file": "ui/item-tile.svg",
+      "width": 240,
+      "height": 240,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "item-selected",
+      "label": "選取物品底板",
+      "file": "ui/item-selected.svg",
+      "width": 240,
+      "height": 240,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "muscle-chip",
+      "label": "肌群標籤底板",
+      "file": "ui/muscle-chip.svg",
+      "width": 240,
+      "height": 56,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "muscle-chip-selected",
+      "label": "已選肌群底板",
+      "file": "ui/muscle-chip-selected.svg",
+      "width": 240,
+      "height": 56,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "stage-badge",
+      "label": "階段標章",
+      "file": "ui/stage-badge.svg",
+      "width": 128,
+      "height": 44,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "progress-track",
+      "label": "進度條底",
+      "file": "ui/progress-track.svg",
+      "width": 400,
+      "height": 24,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "progress-fill",
+      "label": "進度條填色（以裁切控制數值）",
+      "file": "ui/progress-fill.svg",
+      "width": 400,
+      "height": 24,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "selection-ring",
+      "label": "肌群選取點",
+      "file": "ui/selection-ring.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-back",
+      "label": "back",
+      "file": "ui/icon-back.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-close",
+      "label": "close",
+      "file": "ui/icon-close.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-check",
+      "label": "check",
+      "file": "ui/icon-check.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-lock",
+      "label": "lock",
+      "file": "ui/icon-lock.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-rotate",
+      "label": "rotate",
+      "file": "ui/icon-rotate.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-hanger",
+      "label": "hanger",
+      "file": "ui/icon-hanger.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-top",
+      "label": "top",
+      "file": "ui/icon-top.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-bottoms",
+      "label": "bottoms",
+      "file": "ui/icon-bottoms.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-shoes",
+      "label": "shoes",
+      "file": "ui/icon-shoes.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-accessories",
+      "label": "accessories",
+      "file": "ui/icon-accessories.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-dumbbell",
+      "label": "dumbbell",
+      "file": "ui/icon-dumbbell.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-info",
+      "label": "info",
+      "file": "ui/icon-info.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-sparkle",
+      "label": "sparkle",
+      "file": "ui/icon-sparkle.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-heart",
+      "label": "heart",
+      "file": "ui/icon-heart.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-front",
+      "label": "front",
+      "file": "ui/icon-front.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "icon-backview",
+      "label": "backview",
+      "file": "ui/icon-backview.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "svg-ui",
+      "status": "editable"
+    },
+    {
+      "id": "muscle-chest",
+      "label": "胸肌",
+      "file": "muscles/chest.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "muscle-icon",
+      "status": "schematic-not-anatomical-mask"
+    },
+    {
+      "id": "muscle-shoulder",
+      "label": "肩部",
+      "file": "muscles/shoulder.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "muscle-icon",
+      "status": "schematic-not-anatomical-mask"
+    },
+    {
+      "id": "muscle-biceps",
+      "label": "二頭肌",
+      "file": "muscles/biceps.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "muscle-icon",
+      "status": "schematic-not-anatomical-mask"
+    },
+    {
+      "id": "muscle-triceps",
+      "label": "三頭肌",
+      "file": "muscles/triceps.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "muscle-icon",
+      "status": "schematic-not-anatomical-mask"
+    },
+    {
+      "id": "muscle-core",
+      "label": "腹／核心",
+      "file": "muscles/core.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "muscle-icon",
+      "status": "schematic-not-anatomical-mask"
+    },
+    {
+      "id": "muscle-back",
+      "label": "背肌",
+      "file": "muscles/back.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "muscle-icon",
+      "status": "schematic-not-anatomical-mask"
+    },
+    {
+      "id": "muscle-glutes",
+      "label": "臀部",
+      "file": "muscles/glutes.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "muscle-icon",
+      "status": "schematic-not-anatomical-mask"
+    },
+    {
+      "id": "muscle-quads",
+      "label": "大腿前側",
+      "file": "muscles/quads.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "muscle-icon",
+      "status": "schematic-not-anatomical-mask"
+    },
+    {
+      "id": "muscle-hamstrings",
+      "label": "大腿後側",
+      "file": "muscles/hamstrings.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "muscle-icon",
+      "status": "schematic-not-anatomical-mask"
+    },
+    {
+      "id": "muscle-calves",
+      "label": "小腿",
+      "file": "muscles/calves.svg",
+      "width": 64,
+      "height": 64,
+      "kind": "muscle-icon",
+      "status": "schematic-not-anatomical-mask"
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "method": "built-in image_gen",
+  "reference": "Approved evolution and wardrobe concepts; stage 03 front used for other character views",
+  "assets": [
+    {
+      "id": "c01-stage-01-front",
+      "desc": "C01 male adult character, stage 1 起步: slim ordinary physique, narrow shoulders, slim arms and legs. Front view with face very slightly turned right.",
+      "group": "characters",
+      "prompt": "Use case: stylized-concept. Production game UI illustration asset for Pixel Gym, matching the provided approved reference. Crisp hand-crafted pixel-art edges, warm shading, dark brown outlines, adult chibi proportions. NOT smooth vector, not photorealistic, not 3D. No text, labels, numbers, watermark, UI panel, floor, cast shadow or background. True transparent alpha background. One standalone object only, generous empty margin. Full-body standing C01, tousled brown hair, friendly adult face, grey fitted tank top, navy athletic shorts, white socks and white trainers. Relaxed symmetrical pose, arms separated from torso a little, both feet planted apart. Identical head size and height across all evolution stages, only muscle thickness changes. C01 male adult character, stage 1 起步: slim ordinary physique, narrow shoulders, slim arms and legs. Front view with face very slightly turned right. Portrait 1024x1536 canvas, centered at x512; hair top near y180, feet baseline y1400. Character head occupies about 300x300 pixels, body about 3.5 head heights. Reference is style and identity only; draw no surrounding interface.",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-cfbbf277-7066-4f7a-83ea-bba662f16092.png"
+    },
+    {
+      "id": "c01-stage-03-front",
+      "desc": "C01 male adult character, stage 3 結實: clearly athletic moderately muscular physique, broad shoulders, visible biceps and developed thighs. Front view with face very slightly turned right.",
+      "group": "characters",
+      "prompt": "Use case: stylized-concept. Production game UI illustration asset for Pixel Gym, matching the provided approved reference. Crisp hand-crafted pixel-art edges, warm shading, dark brown outlines, adult chibi proportions. NOT smooth vector, not photorealistic, not 3D. No text, labels, numbers, watermark, UI panel, floor, cast shadow or background. True transparent alpha background. One standalone object only, generous empty margin. Full-body standing C01, tousled brown hair, friendly adult face, grey fitted tank top, navy athletic shorts, white socks and white trainers. Relaxed symmetrical pose, arms separated from torso a little, both feet planted apart. Identical head size and height across all evolution stages, only muscle thickness changes. C01 male adult character, stage 3 結實: clearly athletic moderately muscular physique, broad shoulders, visible biceps and developed thighs. Front view with face very slightly turned right. Portrait 1024x1536 canvas, centered at x512; hair top near y180, feet baseline y1400. Character head occupies about 300x300 pixels, body about 3.5 head heights. Reference is style and identity only; draw no surrounding interface.",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-bbdd3305-7017-4d8b-b98e-1572ff84d3d7.png"
+    },
+    {
+      "id": "top-01-basic-tank",
+      "group": "wardrobe",
+      "source": "C:/Users/Nebula-Gary/.codex/generated_images/01a1a9a1-18bd-73f1-b38f-f94dc3f52406/exec-74d20007-153b-4342-a2ef-10a299b23f7f.png",
+      "prompt": "Wardrobe inventory icon: One light grey athletic tank top with cream trim, identical to C01's grey tank. Front facing garment only, no person, no hanger. Square 1024x1024, object centered, visible silhouette entirely inside central 80%, consistent dark outline and warm pixel highlights. No logos or lettering."
+    },
+    {
+      "id": "top-02-street-jacket",
+      "group": "wardrobe",
+      "source": "C:/Users/Nebula-Gary/.codex/generated_images/01a1a9a1-18bd-73f1-b38f-f94dc3f52406/exec-a8b4f39c-da12-451b-b1e1-7c923a05d8d0.png",
+      "prompt": "Wardrobe inventory icon: One mint green and cream-white zip athletic jacket, dark piping, collar and cuff, zipper partially open, sleeves slightly bent. Same street jacket as reference. Front facing garment only, no person, no hanger. Square 1024x1024, object centered, visible silhouette entirely inside central 80%, consistent dark outline and warm pixel highlights. No logos or lettering."
+    },
+    {
+      "id": "c01-stage-01-back",
+      "group": "characters",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-03-front.png",
+      "prompt": "Use case: stylized-concept. One isolated full-body C01 game character matching reference EXACTLY in face, brown tousled hair, pixel art, clothes and pose. Stage 1: slim ordinary beginner, narrow shoulders, thin arms. BACK view of same character, showing back of brown hair, back of grey tank, back of shorts and heels. No face visible. Grey athletic tank, navy shorts, white socks and trainers. Adult friendly chibi; maintain SAME HEIGHT and HEAD SIZE across stages, adjust only muscle bulk. Arms relaxed slightly away from torso. Portrait 1024x1536, centered x512, hair top y180, sole baseline y1400. Hard crisp pixel contour. True transparent background, ZERO glow, ZERO halo, ZERO shadow, ZERO floor, no text, no UI. Each visible pixel belongs to the character only.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-01-back.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-3185a3a6-e51f-4dfb-858c-18eb7301e3d1.png",
+      "status": "saved"
+    },
+    {
+      "id": "c01-stage-02-front",
+      "group": "characters",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-03-front.png",
+      "prompt": "Use case: stylized-concept. One isolated full-body C01 game character matching reference EXACTLY in face, brown tousled hair, pixel art, clothes and pose. Stage 2: fit lean athletic, slightly developed shoulders, a little more muscle than beginner. FRONT view, face slightly turned right. Grey athletic tank, navy shorts, white socks and trainers. Adult friendly chibi; maintain SAME HEIGHT and HEAD SIZE across stages, adjust only muscle bulk. Arms relaxed slightly away from torso. Portrait 1024x1536, centered x512, hair top y180, sole baseline y1400. Hard crisp pixel contour. True transparent background, ZERO glow, ZERO halo, ZERO shadow, ZERO floor, no text, no UI. Each visible pixel belongs to the character only.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-02-front.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-ed426569-e7c8-4b01-8a81-f327da187b36.png",
+      "status": "saved"
+    },
+    {
+      "id": "c01-stage-02-back",
+      "group": "characters",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-03-front.png",
+      "prompt": "Use case: stylized-concept. One isolated full-body C01 game character matching reference EXACTLY in face, brown tousled hair, pixel art, clothes and pose. Stage 2: fit lean athletic, slightly developed shoulders, a little more muscle than beginner. BACK view of same character, showing back of brown hair, back of grey tank, back of shorts and heels. No face visible. Grey athletic tank, navy shorts, white socks and trainers. Adult friendly chibi; maintain SAME HEIGHT and HEAD SIZE across stages, adjust only muscle bulk. Arms relaxed slightly away from torso. Portrait 1024x1536, centered x512, hair top y180, sole baseline y1400. Hard crisp pixel contour. True transparent background, ZERO glow, ZERO halo, ZERO shadow, ZERO floor, no text, no UI. Each visible pixel belongs to the character only.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-02-back.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-a0e6dea0-b2f2-43c5-812f-3dcaa3a7accb.png",
+      "status": "saved"
+    },
+    {
+      "id": "c01-stage-03-back",
+      "group": "characters",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-03-front.png",
+      "prompt": "Use case: stylized-concept. One isolated full-body C01 game character matching reference EXACTLY in face, brown tousled hair, pixel art, clothes and pose. Stage 3: moderately muscular, broad shoulders, developed arms and thighs. BACK view of same character, showing back of brown hair, back of grey tank, back of shorts and heels. No face visible. Grey athletic tank, navy shorts, white socks and trainers. Adult friendly chibi; maintain SAME HEIGHT and HEAD SIZE across stages, adjust only muscle bulk. Arms relaxed slightly away from torso. Portrait 1024x1536, centered x512, hair top y180, sole baseline y1400. Hard crisp pixel contour. True transparent background, ZERO glow, ZERO halo, ZERO shadow, ZERO floor, no text, no UI. Each visible pixel belongs to the character only.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-03-back.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-06698066-8fa5-4135-97ba-e3dacd969895.png",
+      "status": "saved"
+    },
+    {
+      "id": "c01-stage-04-front",
+      "group": "characters",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-03-front.png",
+      "prompt": "Use case: stylized-concept. One isolated full-body C01 game character matching reference EXACTLY in face, brown tousled hair, pixel art, clothes and pose. Stage 4: very muscular broad chest back and shoulders, thick biceps and thighs. FRONT view, face slightly turned right. Grey athletic tank, navy shorts, white socks and trainers. Adult friendly chibi; maintain SAME HEIGHT and HEAD SIZE across stages, adjust only muscle bulk. Arms relaxed slightly away from torso. Portrait 1024x1536, centered x512, hair top y180, sole baseline y1400. Hard crisp pixel contour. True transparent background, ZERO glow, ZERO halo, ZERO shadow, ZERO floor, no text, no UI. Each visible pixel belongs to the character only.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-04-front.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-f3bc2979-4011-49af-85f2-885208f924b7.png",
+      "status": "saved"
+    },
+    {
+      "id": "c01-stage-04-back",
+      "group": "characters",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-03-front.png",
+      "prompt": "Use case: stylized-concept. One isolated full-body C01 game character matching reference EXACTLY in face, brown tousled hair, pixel art, clothes and pose. Stage 4: very muscular broad chest back and shoulders, thick biceps and thighs. BACK view of same character, showing back of brown hair, back of grey tank, back of shorts and heels. No face visible. Grey athletic tank, navy shorts, white socks and trainers. Adult friendly chibi; maintain SAME HEIGHT and HEAD SIZE across stages, adjust only muscle bulk. Arms relaxed slightly away from torso. Portrait 1024x1536, centered x512, hair top y180, sole baseline y1400. Hard crisp pixel contour. True transparent background, ZERO glow, ZERO halo, ZERO shadow, ZERO floor, no text, no UI. Each visible pixel belongs to the character only.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-04-back.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-ebbcb938-eed3-42dd-9591-b091ffbfc1c2.png",
+      "status": "saved"
+    },
+    {
+      "id": "c01-stage-05-front",
+      "group": "characters",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-03-front.png",
+      "prompt": "Use case: stylized-concept. One isolated full-body C01 game character matching reference EXACTLY in face, brown tousled hair, pixel art, clothes and pose. Stage 5: largest powerful adult chibi bodybuilder stage, very wide shoulders and back, huge strong arms and thighs, unmistakably bulkier than all previous stages. FRONT view, face slightly turned right. Grey athletic tank, navy shorts, white socks and trainers. Adult friendly chibi; maintain SAME HEIGHT and HEAD SIZE across stages, adjust only muscle bulk. Arms relaxed slightly away from torso. Portrait 1024x1536, centered x512, hair top y180, sole baseline y1400. Hard crisp pixel contour. True transparent background, ZERO glow, ZERO halo, ZERO shadow, ZERO floor, no text, no UI. Each visible pixel belongs to the character only.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-05-front.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-9ddca850-258a-4bd6-b76b-c446bed3c247.png",
+      "status": "saved"
+    },
+    {
+      "id": "c01-stage-05-back",
+      "group": "characters",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-03-front.png",
+      "prompt": "Use case: stylized-concept. One isolated full-body C01 game character matching reference EXACTLY in face, brown tousled hair, pixel art, clothes and pose. Stage 5: largest powerful adult chibi bodybuilder stage, very wide shoulders and back, huge strong arms and thighs, unmistakably bulkier than all previous stages. BACK view of same character, showing back of brown hair, back of grey tank, back of shorts and heels. No face visible. Grey athletic tank, navy shorts, white socks and trainers. Adult friendly chibi; maintain SAME HEIGHT and HEAD SIZE across stages, adjust only muscle bulk. Arms relaxed slightly away from torso. Portrait 1024x1536, centered x512, hair top y180, sole baseline y1400. Hard crisp pixel contour. True transparent background, ZERO glow, ZERO halo, ZERO shadow, ZERO floor, no text, no UI. Each visible pixel belongs to the character only.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/characters/c01-stage-05-back.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-76d121de-d65b-4019-997d-fb7faa618e30.png",
+      "status": "saved"
+    },
+    {
+      "id": "top-03-power-tank",
+      "group": "wardrobe",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/concepts/character-wardrobe-v1.png",
+      "prompt": "Use case: stylized-concept. Single independent wardrobe INVENTORY ICON for this exact pixel gym style. Charcoal black sleeveless athletic tank top, cream neckline trim. Garment/object only, absolutely no body or mannequin or hanger. Front view except shoes. Square 1024x1024, centered and entirely within middle 80%. Handcrafted warm pixel art with dark outlines, disciplined color clusters, crisp silhouette. True transparent alpha background with ZERO glow or halo or shadow or floor. No text, labels, logos, UI or frame. This is one isolated item, not a sheet.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/wardrobe/top-03-power-tank.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-a7845c7b-d62d-46ee-974f-a0ca7cf7a268.png",
+      "status": "saved"
+    },
+    {
+      "id": "top-04-coral-tee",
+      "group": "wardrobe",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/concepts/character-wardrobe-v1.png",
+      "prompt": "Use case: stylized-concept. Single independent wardrobe INVENTORY ICON for this exact pixel gym style. Coral salmon short sleeve athletic crewneck T-shirt. Garment/object only, absolutely no body or mannequin or hanger. Front view except shoes. Square 1024x1024, centered and entirely within middle 80%. Handcrafted warm pixel art with dark outlines, disciplined color clusters, crisp silhouette. True transparent alpha background with ZERO glow or halo or shadow or floor. No text, labels, logos, UI or frame. This is one isolated item, not a sheet.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/wardrobe/top-04-coral-tee.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-193f998d-a2ea-42ee-9497-e7d84de89377.png",
+      "status": "saved"
+    },
+    {
+      "id": "top-05-night-jacket",
+      "group": "wardrobe",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/concepts/character-wardrobe-v1.png",
+      "prompt": "Use case: stylized-concept. Single independent wardrobe INVENTORY ICON for this exact pixel gym style. Dark navy zip running jacket, cool pale reflective chevron chest stripe. Garment/object only, absolutely no body or mannequin or hanger. Front view except shoes. Square 1024x1024, centered and entirely within middle 80%. Handcrafted warm pixel art with dark outlines, disciplined color clusters, crisp silhouette. True transparent alpha background with ZERO glow or halo or shadow or floor. No text, labels, logos, UI or frame. This is one isolated item, not a sheet.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/wardrobe/top-05-night-jacket.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-4feb3a59-595a-462a-8a9f-c9a7c00f75b2.png",
+      "status": "saved"
+    },
+    {
+      "id": "top-06-varsity-jacket",
+      "group": "wardrobe",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/concepts/character-wardrobe-v1.png",
+      "prompt": "Use case: stylized-concept. Single independent wardrobe INVENTORY ICON for this exact pixel gym style. Navy varsity jacket with cream sleeves, striped cuffs and collar, no letters. Garment/object only, absolutely no body or mannequin or hanger. Front view except shoes. Square 1024x1024, centered and entirely within middle 80%. Handcrafted warm pixel art with dark outlines, disciplined color clusters, crisp silhouette. True transparent alpha background with ZERO glow or halo or shadow or floor. No text, labels, logos, UI or frame. This is one isolated item, not a sheet.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/wardrobe/top-06-varsity-jacket.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-3963dcd5-0605-40e9-90fb-4296f1dad879.png",
+      "status": "saved"
+    },
+    {
+      "id": "bottom-01-navy-shorts",
+      "group": "wardrobe",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/concepts/character-wardrobe-v1.png",
+      "prompt": "Use case: stylized-concept. Single independent wardrobe INVENTORY ICON for this exact pixel gym style. Navy loose athletic shorts with elastic waist and two legs. Garment/object only, absolutely no body or mannequin or hanger. Front view except shoes. Square 1024x1024, centered and entirely within middle 80%. Handcrafted warm pixel art with dark outlines, disciplined color clusters, crisp silhouette. True transparent alpha background with ZERO glow or halo or shadow or floor. No text, labels, logos, UI or frame. This is one isolated item, not a sheet.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/wardrobe/bottom-01-navy-shorts.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-c7a4418b-eb0a-437a-a6bf-1826ea9ebd76.png",
+      "status": "saved"
+    },
+    {
+      "id": "bottom-02-training-joggers",
+      "group": "wardrobe",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/concepts/character-wardrobe-v1.png",
+      "prompt": "Use case: stylized-concept. Single independent wardrobe INVENTORY ICON for this exact pixel gym style. Charcoal tapered athletic jogger trousers with mint side stripe. Garment/object only, absolutely no body or mannequin or hanger. Front view except shoes. Square 1024x1024, centered and entirely within middle 80%. Handcrafted warm pixel art with dark outlines, disciplined color clusters, crisp silhouette. True transparent alpha background with ZERO glow or halo or shadow or floor. No text, labels, logos, UI or frame. This is one isolated item, not a sheet.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/wardrobe/bottom-02-training-joggers.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-4fa69109-d12e-4cef-8af7-9cb393ca3908.png",
+      "status": "saved"
+    },
+    {
+      "id": "bottom-03-light-shorts",
+      "group": "wardrobe",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/concepts/character-wardrobe-v1.png",
+      "prompt": "Use case: stylized-concept. Single independent wardrobe INVENTORY ICON for this exact pixel gym style. Cream light athletic shorts with mint side stripe. Garment/object only, absolutely no body or mannequin or hanger. Front view except shoes. Square 1024x1024, centered and entirely within middle 80%. Handcrafted warm pixel art with dark outlines, disciplined color clusters, crisp silhouette. True transparent alpha background with ZERO glow or halo or shadow or floor. No text, labels, logos, UI or frame. This is one isolated item, not a sheet.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/wardrobe/bottom-03-light-shorts.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-fa2a91d5-ba67-4ce9-a69b-6e59b2c9504f.png",
+      "status": "saved"
+    },
+    {
+      "id": "shoes-01-white-trainers",
+      "group": "wardrobe",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/concepts/character-wardrobe-v1.png",
+      "prompt": "Use case: stylized-concept. Single independent wardrobe INVENTORY ICON for this exact pixel gym style. A pair of white and pale grey athletic trainers, slight three quarter front view. Garment/object only, absolutely no body or mannequin or hanger. Front view except shoes. Square 1024x1024, centered and entirely within middle 80%. Handcrafted warm pixel art with dark outlines, disciplined color clusters, crisp silhouette. True transparent alpha background with ZERO glow or halo or shadow or floor. No text, labels, logos, UI or frame. This is one isolated item, not a sheet.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/wardrobe/shoes-01-white-trainers.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-8c11609a-4b99-486c-9839-ce670c3eb6ec.png",
+      "status": "saved"
+    },
+    {
+      "id": "shoes-02-navy-runners",
+      "group": "wardrobe",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/concepts/character-wardrobe-v1.png",
+      "prompt": "Use case: stylized-concept. Single independent wardrobe INVENTORY ICON for this exact pixel gym style. A pair of navy and mint running shoes, slight three quarter front view. Garment/object only, absolutely no body or mannequin or hanger. Front view except shoes. Square 1024x1024, centered and entirely within middle 80%. Handcrafted warm pixel art with dark outlines, disciplined color clusters, crisp silhouette. True transparent alpha background with ZERO glow or halo or shadow or floor. No text, labels, logos, UI or frame. This is one isolated item, not a sheet.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/wardrobe/shoes-02-navy-runners.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-d0d75708-74f3-461f-addf-fa0eaf2fe20c.png",
+      "status": "saved"
+    },
+    {
+      "id": "accessory-01-headband",
+      "group": "wardrobe",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/concepts/character-wardrobe-v1.png",
+      "prompt": "Use case: stylized-concept. Single independent wardrobe INVENTORY ICON for this exact pixel gym style. One cream athletic fabric headband, loop shape. Garment/object only, absolutely no body or mannequin or hanger. Front view except shoes. Square 1024x1024, centered and entirely within middle 80%. Handcrafted warm pixel art with dark outlines, disciplined color clusters, crisp silhouette. True transparent alpha background with ZERO glow or halo or shadow or floor. No text, labels, logos, UI or frame. This is one isolated item, not a sheet.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/wardrobe/accessory-01-headband.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-0c1d7cf6-c979-420c-b729-1b81e3a6faac.png",
+      "status": "saved"
+    },
+    {
+      "id": "accessory-02-wristbands",
+      "group": "wardrobe",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/concepts/character-wardrobe-v1.png",
+      "prompt": "Use case: stylized-concept. Single independent wardrobe INVENTORY ICON for this exact pixel gym style. A matching pair of mint green terry wrist sweatbands. Garment/object only, absolutely no body or mannequin or hanger. Front view except shoes. Square 1024x1024, centered and entirely within middle 80%. Handcrafted warm pixel art with dark outlines, disciplined color clusters, crisp silhouette. True transparent alpha background with ZERO glow or halo or shadow or floor. No text, labels, logos, UI or frame. This is one isolated item, not a sheet.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/wardrobe/accessory-02-wristbands.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-b3772311-fd5a-426b-9d64-0ce4b4ecc39f.png",
+      "status": "saved"
+    },
+    {
+      "id": "accessory-03-towel",
+      "group": "wardrobe",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/concepts/character-wardrobe-v1.png",
+      "prompt": "Use case: stylized-concept. Single independent wardrobe INVENTORY ICON for this exact pixel gym style. One folded cream cotton gym towel with two mint edge stripes. Garment/object only, absolutely no body or mannequin or hanger. Front view except shoes. Square 1024x1024, centered and entirely within middle 80%. Handcrafted warm pixel art with dark outlines, disciplined color clusters, crisp silhouette. True transparent alpha background with ZERO glow or halo or shadow or floor. No text, labels, logos, UI or frame. This is one isolated item, not a sheet.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/wardrobe/accessory-03-towel.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-29b4a922-b8b3-41d7-93ae-84442561ec36.png",
+      "status": "saved"
+    },
+    {
+      "id": "locker-room-empty",
+      "group": "backgrounds",
+      "ref": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/concepts/character-wardrobe-v1.png",
+      "opaque": true,
+      "prompt": "Use case: stylized-concept. Create clean empty 16:9 landscape 1920x1080 background plate for the reference Pixel Gym wardrobe/evolution screen. Keep warm Japanese neighborhood gym pixel art: honey wooden floor and wood wall, grey lockers far left, small bag and bench left, warm lamps, plants at side edges, one tall wooden frame mirror toward left-center. Mirror reflects only empty opposite wooden wall, NO characters. Spacious unoccupied central floor for avatar; right half quiet wooden wall for future UI. Remove ALL interface, ALL letters, numbers and ALL people. No HUD, no menus, no poster text. Crisp pixel edges, dark warm outlines, cozy amber evening lighting. It is a background only; no baked character, no body silhouette.",
+      "path": "C:/xampp/htdocs/hoho-events/pixel-gym/assets/evolution/v1/backgrounds/locker-room-empty.png",
+      "source": "C:\\Users\\Nebula-Gary\\.codex\\generated_images\\01a1a9a1-18bd-73f1-b38f-f94dc3f52406\\exec-f4af9cae-b8b9-4fa2-a2ac-f768ec044adf.png",
+      "status": "saved"
+    }
+  ]
+}
