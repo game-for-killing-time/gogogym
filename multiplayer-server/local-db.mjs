@@ -7,6 +7,8 @@ export function createLocalDatabase(filename=':memory:'){
   if(!db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='gym_rooms'").get())
     db.exec(readFileSync(new URL('../migrations/0001_multiplayer.sql',import.meta.url),'utf8'));
   db.exec(readFileSync(new URL('../migrations/0002_accounts.sql',import.meta.url),'utf8'));
+  if(!db.prepare('PRAGMA table_info(gym_rooms)').all().some(column=>column.name==='name'))
+    db.exec(readFileSync(new URL('../migrations/0003_room_names.sql',import.meta.url),'utf8'));
   function prepare(sql){
     let values=[];
     const wrapped={

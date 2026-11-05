@@ -75,6 +75,8 @@ function networkStatus(status){
 }
 function networkError(error){const el=$('#room-error');if(el)el.textContent=error.message||'未能連線，請再試一次。';else toast(error.message||'未能連線，請再試一次。');}
 function updatePresence(){
+  $('#gym-name').textContent=net.snapshot?.roomName||'街角健身室';
+  $('#gym-name').title=$('#gym-name').textContent;
   const count=net.snapshot?.players?.length||0;
   $('#presence').textContent=net.status==='online'?`● ${count} / 12 人在線`:net.status==='reconnecting'?'◌ 正在重新連線':net.status==='connecting'?'◌ 正在加入房間':'● 開房邀請朋友';
   $('#presence').dataset.status=net.status;
@@ -90,7 +92,7 @@ function renderRoster(){
   const list=$('#room-roster');if(!list)return;list.replaceChildren();
   for(const p of net.snapshot?.players||[]){
     const li=document.createElement('li'),dot=document.createElement('i'),label=document.createElement('span'),state=document.createElement('small');
-    dot.style.background=p.color;label.textContent=p.name+(p.id===net.session?.playerId?'（你）':'');
+    dot.style.background=p.color;label.textContent=p.id===net.session?.playerId?'你':p.name;
     state.textContent=p.exercise?`${names[p.exercise.category]}${p.exercise.paused?' · 暫停':'訓練中'}`:p.moving?'行走中':'休息中';li.append(dot,label,state);list.append(li);
   }
   const count=$('#room-member-count');if(count)count.textContent=`${net.snapshot?.players?.length||0} / 12 人`;
@@ -100,17 +102,18 @@ function showRoom(){
   if(session||startingTraining)return;
   if(!entered||!activeCharacter(profile)){showAccount();return;}
   if(net.session){
-    show(`<h2 id="dialog-title">一齊練，慢慢進步。</h2><div class="room-code-row"><span>房間碼 <b>${safe(net.session.roomCode)}</b></span><span id="room-member-count"></span></div><p id="room-connection"></p><label class="room-field">邀請朋友<input id="invite-link" readonly value="${safe(inviteLink())}" aria-label="邀請連結"></label><div class="actions"><button id="copy-invite" class="primary">複製邀請連結</button><button id="leave-room">離開房間</button></div><p id="room-error" role="status"></p><ul id="room-roster" class="room-roster" aria-label="同房會員"></ul>`,'共享健身室');
+    show(`<h2 id="dialog-title">${safe(net.snapshot?.roomName||"街角健身室")}</h2><div class="room-code-row"><span>房間碼 <b>${safe(net.session.roomCode)}</b></span><span id="room-member-count"></span></div><p id="room-connection"></p><label class="room-field">邀請朋友<input id="invite-link" readonly value="${safe(inviteLink())}" aria-label="邀請連結"></label><div class="actions"><button id="copy-invite" class="primary">複製邀請連結</button><button id="leave-room">離開房間</button></div><p id="room-error" role="status"></p><ul id="room-roster" class="room-roster" aria-label="同房會員"></ul>`,'共享健身室');
     renderRoster();$('#copy-invite').onclick=async()=>{try{await navigator.clipboard.writeText(inviteLink());toast('已複製邀請連結，傳俾朋友就可以加入。');}catch{$('#invite-link').select();toast('請複製已選取的邀請連結。');}};
     $('#leave-room').onclick=async()=>{await net.leave();const url=new URL(location.href);url.searchParams.delete('room');history.replaceState(null,'',url);showRoom();};
   }else{
-    show(`<h2 id="dialog-title">朋友一齊嚟做 gym</h2><p>開一間最多12人嘅房，或者用朋友嘅房間碼加入。</p><label class="room-field">你的名字<input id="nickname" readonly maxlength="16" autocomplete="nickname" value="${safe(nickname())}" placeholder="點稱呼你？"></label><div class="actions"><button id="create-room" class="primary">開新房間</button></div><form id="join-room-form"><label class="room-field">朋友的房間碼<input id="room-code" maxlength="6" autocapitalize="characters" spellcheck="false" autocomplete="off" value="${safe(inviteCode())}" placeholder="6位房間碼"></label><button id="join-room" type="submit">加入房間</button></form><p id="room-error" role="status"></p><p class="mini-note">名字會顯示俾同房朋友。訓練成長仍保存喺各自瀏覽器。</p>`,'多人健身室');
+    show(`<h2 id="dialog-title">朋友一齊嚟做 gym</h2><p>開一間最多12人嘅房，或者用朋友嘅房間碼加入。</p><label class="room-field">你的名字<input id="nickname" readonly maxlength="16" autocomplete="nickname" value="${safe(nickname())}" placeholder="點稱呼你？"></label><label class="room-field">健身室名稱<input id="room-name" maxlength="24" value="街角健身室" placeholder="幫健身室改個名"></label><div class="actions"><button id="create-room" class="primary">開新房間</button></div><form id="join-room-form"><label class="room-field">朋友的房間碼<input id="room-code" maxlength="6" autocapitalize="characters" spellcheck="false" autocomplete="off" value="${safe(inviteCode())}" placeholder="6位房間碼"></label><button id="join-room" type="submit">加入房間</button></form><p id="room-error" role="status"></p><p class="mini-note">名字會顯示俾同房朋友。訓練成長仍保存喺各自瀏覽器。</p>`,'多人健身室');
     const enter=async creating=>{
       const name=nickname(),code=$('#room-code').value.trim().toUpperCase();
     if(!name){$('#room-error').textContent='請先輸入名字。';return;}
+      if(creating&&!$('#room-name').value.trim()){$('#room-error').textContent='請輸入健身室名稱。';return;}
       if(!creating&&!/^[A-Z0-9]{6}$/.test(code)){$('#room-error').textContent='請輸入6位房間碼。';return;}
       $('#create-room').disabled=$('#join-room').disabled=true;$('#room-error').textContent='正在連線…';
-      try{if(creating)await net.create(name);else await net.join(code,name);try{localStorage.setItem('pixel-gym.nickname',name);}catch{}
+      try{if(creating)await net.create(name,$('#room-name').value.trim());else await net.join(code,name);try{localStorage.setItem('pixel-gym.nickname',name);}catch{}
         history.replaceState(null,'',inviteLink());showRoom();toast('已加入房間，可以一齊行走同訓練。');
       }catch(error){if($('#room-error'))$('#room-error').textContent=error.message||'未能加入，請再試一次。';if($('#create-room'))$('#create-room').disabled=$('#join-room').disabled=false;}
     };
@@ -120,7 +123,7 @@ function showRoom(){
 const panelOpen=()=>!dialog.hidden;
 function syncControls(){
   document.body.dataset.training=String(!!session);
-  for(const id of ['courses','profile','friends','emotes','help','presence','account-main'])$('#'+id).disabled=!!session||startingTraining;
+  for(const id of ['courses','profile','friends','emotes','help','presence'])$('#'+id).disabled=!!session||startingTraining;
   $('#goal-content').hidden=!goalExpanded||!!session;
   $('#toggle-goal').disabled=!!session;
   $('#toggle-goal').setAttribute('aria-expanded',String(!$('#goal-content').hidden));
@@ -132,7 +135,7 @@ $('#courses').onclick=()=>{if(session)return;hidePanel();courses($('#courses-pan
 $('#close-courses').onclick=()=>{courses(false);$('#courses').focus();};
 $('#toggle-goal').onclick=()=>{goalExpanded=!goalExpanded;syncControls();};
 $('#friends').onclick=$('#presence').onclick=showRoom;
-$('#account-main').onclick=showAccount;
+
 $('#emotes').onclick=()=>{
   show('<h2 id="dialog-title">打個招呼</h2><div class="emote-options"><button data-emote="☺" aria-label="微笑">☺</button><button data-emote="♡" aria-label="愛心">♡</button><button data-emote="✦" aria-label="加油">✦</button></div>','表情');
   for(const b of document.querySelectorAll('[data-emote]'))b.onclick=()=>{emote=b.dataset.emote;emoteUntil=performance.now()+3000;hidePanel();};
@@ -147,7 +150,7 @@ function weekly(){return player.weekly.key===periodKeys(Date.now()).week?player.
 function canTrain(category){return (entered&&!!activeCharacter(profile))&&daily().length<3&&!daily().includes(category);}
 function updateUI(){
   document.documentElement.style.setProperty('--member-accent',activeCharacter(profile)?.accent||'#c2ccaf');
-  $('#account-main').textContent=profile?'角色選擇／備份':'建立本機角色';
+
   const count=3-daily().length;
   $('#tickets').textContent=`${count} / 3`;
   $('#daily-count').textContent=`${daily().length} / 3`;
@@ -160,7 +163,7 @@ function updateUI(){
   $('#date').textContent=new Intl.DateTimeFormat('zh-HK',{month:'2-digit',day:'2-digit',timeZone:'Asia/Hong_Kong'}).format(new Date());
   $('#goal-count').textContent=`${weekly()} / 8`;
   $('#goal-bar').style.width=`${Math.min(100,weekly()/8*100)}%`;
-  $('#total').textContent=`累積成長 ${Object.values(player.abilities).reduce((a,b)=>a+b,0)}`;
+
   $('#save-state').textContent=saveWarning||'本機自動存檔 · 請定期匯出備份';
   $('#member-name').textContent=profile?.name||'本機新玩家';
 }
@@ -338,7 +341,7 @@ function drawActor(c,x,y,dir,frame,height=103){
 }
 function nameplate(c,member,x,y,self=false){
   if(!member)return;c.font='bold 11px Microsoft JhengHei';c.textAlign='center';
-  const label=member.name+(self?' · 你':''),width=Math.min(150,c.measureText(label).width+23);
+  const label=self?'你':member.name,width=Math.min(150,c.measureText(label).width+23);
   c.fillStyle='#192332ed';c.beginPath();c.roundRect(x-width/2,y-14,width,21,4);c.fill();
   c.fillStyle=member.color;c.fillRect(x-width/2+5,y-7,5,5);c.fillStyle='#fff0d3';c.fillText(label,x+4,y,135);
 }

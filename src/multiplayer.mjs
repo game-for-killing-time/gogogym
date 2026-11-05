@@ -48,7 +48,7 @@ export class MultiplayerClient {
   get snapshot() { return this._snapshot; }
   get status() { return this._status; }
 
-  async create(name) { return this._enter(null, name); }
+  async create(name, roomName) { return this._enter(null, name, null, roomName); }
   async join(roomCode, name) { return this._enter(String(roomCode).trim().toUpperCase(), name); }
 
   async restore() {
@@ -132,7 +132,7 @@ export class MultiplayerClient {
     return true;
   }
 
-  async _enter(roomCode, name, saved = null) {
+  async _enter(roomCode, name, saved = null, roomName) {
     if (roomCode !== null && !ROOM_CODE.test(roomCode)) throw new MultiplayerError('INVALID_ROOM', '請輸入六位房間碼。');
     return this._enqueue(async () => {
       if (this._session) throw new MultiplayerError('ALREADY_JOINED', '請先離開目前的房間。');
@@ -143,6 +143,7 @@ export class MultiplayerClient {
       this._setStatus('connecting');
       try {
         const body = { name: this._name };
+        if (roomCode === null && roomName !== undefined) body.roomName = roomName;
         if (saved) body.token = saved.token;
         const data = await this._request(roomCode ? `/api/rooms/${roomCode}/join` : '/api/rooms', body);
         if (!this._adopt(data, epoch)) return null;

@@ -22,6 +22,13 @@ function nameOf(value){
   if(!name||Array.from(name).length>16)fail(400,'INVALID_NAME','暱稱請使用 1 至 16 個字。');
   return name;
 }
+function gymNameOf(value){
+  if(value===undefined)return '街角健身室';
+  if(typeof value!=='string')fail(400,'INVALID_ROOM_NAME','請輸入健身室名稱。');
+  const name=value.normalize('NFKC').trim();
+  if(!name||Array.from(name).length>24||/[\u0000-\u001f\u007f-\u009f<>]/.test(name))fail(400,'INVALID_ROOM_NAME','健身室名稱請使用 1 至 24 個字，不可含標籤或控制字元。');
+  return name;
+}
 function finite(value,min,max,label){if(typeof value!=='number'||!Number.isFinite(value)||value<min||value>max)fail(400,'INVALID_STATE',`${label}不正確。`);return value;}
 function integer(value,min,max,label){finite(value,min,max,label);if(!Number.isSafeInteger(value))fail(400,'INVALID_STATE',`${label}不正確。`);return value;}
 function stateOf(state,player){
@@ -64,7 +71,8 @@ async function member(db,code,token,now,allowExpired=false){
 }
 export async function getSnapshot(db,code,now=Date.now()){
   const result=await statement(db,'SELECT id,name,color,x,y,dir,moving,station_key,exercise_json,emote,emote_until FROM gym_players WHERE room_code = ? AND seen_at > ? ORDER BY joined_at,id',code,cutoff(now)).all();
-  return {roomCode:code,capacity:CAPACITY,serverTime:now,players:result.results.map(p=>({id:p.id,name:p.name,color:p.color,x:p.x,y:p.y,dir:p.dir,moving:!!p.moving,emote:p.emote_until>now?p.emote:'',exercise:p.station_key&&p.exercise_json?JSON.parse(p.exercise_json):null,connected:true}))};
+  const gym=await first(db,'SELECT name FROM gym_rooms WHERE code = ?',code);
+  return {roomCode:code,roomName:gym?.name||'街角健身室',capacity:CAPACITY,serverTime:now,players:result.results.map(p=>({id:p.id,name:p.name,color:p.color,x:p.x,y:p.y,dir:p.dir,moving:!!p.moving,emote:p.emote_until>now?p.emote:'',exercise:p.station_key&&p.exercise_json?JSON.parse(p.exercise_json):null,connected:true}))};
 }
 async function addMember(db,code,name,now){
   const token=newToken(),id=crypto.randomUUID(),color=COLORS[Math.floor(Math.random()*COLORS.length)];
@@ -83,11 +91,11 @@ export async function handleMultiplayer(request,db,options={}){
     if(origin&&origin!==url.origin)fail(403,'ORIGIN_REJECTED','此房間只接受同一網站的請求。');
     const body=await readBody(request),now=options.now?options.now():Date.now();
     if(pathname==='/api/rooms'){
-      const name=nameOf(body.name);
+      const name=nameOf(body.name),roomName=gymNameOf(body.roomName);
       await run(db,'DELETE FROM gym_rooms WHERE code IN (SELECT code FROM gym_rooms WHERE expires_at <= ? LIMIT 10)',now);
       if((await first(db,'SELECT COUNT(*) AS total FROM gym_rooms')).total>=1000)fail(503,'SERVER_BUSY','房間暫時已滿，請稍後再試。');
       for(let attempt=0;attempt<6;attempt++){
-        const code=roomCode(),made=await run(db,'INSERT OR IGNORE INTO gym_rooms(code,created_at,expires_at) VALUES(?,?,?)',code,now,now+ROOM_TTL);
+        const code=roomCode(),made=await run(db,'INSERT OR IGNORE INTO gym_rooms(code,created_at,expires_at,name) VALUES(?,?,?,?)',code,now,now+ROOM_TTL,roomName);
         if(changes(made))return response(await addMember(db,code,name,now),201);
       }
       fail(503,'SERVER_BUSY','暫時未能建立房間，請稍後再試。');

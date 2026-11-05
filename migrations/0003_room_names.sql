@@ -1,0 +1,1 @@
+ALTER TABLE gym_rooms ADD COLUMN name TEXT NOT NULL DEFAULT '街角健身室';

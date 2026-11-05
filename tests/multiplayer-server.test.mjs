@@ -107,3 +107,14 @@ test('actual HTTP preview serves game assets and synchronizes separate network c
   const seen=await post(`/api/rooms/${a.roomCode}/sync`,{token:b.token,seq:0,state:state({x:1050})});
   assert.equal(seen.snapshot.players.find(p=>p.id===a.playerId).x,999);
 });
+
+test('custom gym names persist across joining and syncing; invalid names rejected',async t=>{
+  const q=setup(t),host=await q.request('/api/rooms',{name:'甲',roomName:'夜貓健身室'});
+  assert.equal(host.status,201);assert.equal(host.snapshot.roomName,'夜貓健身室');
+  const guest=await q.request(`/api/rooms/${host.roomCode}/join`,{name:'乙'});
+  assert.equal(guest.snapshot.roomName,'夜貓健身室');
+  assert.equal((await q.action(guest,'sync',{seq:0,state:state()})).snapshot.roomName,'夜貓健身室');
+  assert.equal((await q.create()).snapshot.roomName,'街角健身室');
+  for(const roomName of ['', ' ', '<script>', '字'.repeat(25), 42])
+    assert.equal((await q.request('/api/rooms',{name:'甲',roomName})).error,'INVALID_ROOM_NAME');
+});
