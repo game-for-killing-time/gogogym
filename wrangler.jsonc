@@ -12,7 +12,7 @@
     "binding": "DB",
     "database_name": "gogogym",
     // Replace with the ID of the database created in YOUR Cloudflare account.
-    "database_id": "00000000-0000-4000-8000-000000000000",
+    "database_id": "98a0a67a-a1b4-4778-8d2c-c9b3c8260c8d",
     "migrations_dir": "migrations"
   }]
 }
