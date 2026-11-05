@@ -29,7 +29,7 @@ let accountOpen=false,settling=false,trainingTrace=[],trainingSteps=0,stepRemain
 function profileChanged(next){
   profile=next;player=activeCharacter(profile)?.progress||newPlayer();
   document.documentElement.style.setProperty('--member-accent',activeCharacter(profile)?.accent||'#c2ccaf');
-  $('#member-name').textContent=activeCharacter(profile)?.name||'本機新玩家';
+  $('#member-name').textContent=profile?.name||'本機新玩家';
   saveWarning='';updateUI();
 }
 function showAccount(){
@@ -42,7 +42,7 @@ function showAccount(){
 const remoteMembers=new Map();
 const net=new MultiplayerClient({getState:networkState,onSnapshot:receiveSnapshot,onStatus:networkStatus,onError:networkError});
 const safe=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function nickname(){return activeCharacter(profile)?.name||'新會員';}
+function nickname(){return profile?.name||'新會員';}
 function inviteCode(){return (new URL(location.href).searchParams.get('room')||'').toUpperCase().slice(0,6);}
 function inviteLink(){const url=new URL(location.href);url.search='';url.searchParams.set('room',net.session.roomCode);url.hash='';return url.href;}
 function networkState(){
@@ -62,13 +62,13 @@ function receiveSnapshot(snapshot){
   if(session&&!session.done&&net.status==='online'&&localMember&&!localMember.exercise){
     releaseAll();session=null;paused=false;hidePanel();toast('器材位置已釋放，請重新選擇訓練。');
   }
-  $('#member-name').textContent=activeCharacter(profile)?.name||'本機新玩家';
+  $('#member-name').textContent=profile?.name||'本機新玩家';
   updatePresence();renderRoster();updateStationAvailability();
 }
 function networkStatus(status){
   const previous=lastNetworkStatus;lastNetworkStatus=status;
   if(status==='offline'){
-    remoteMembers.clear();localMember=null;$('#member-name').textContent=activeCharacter(profile)?.name||'本機新玩家';
+    remoteMembers.clear();localMember=null;$('#member-name').textContent=profile?.name||'本機新玩家';
     if(previous!=='offline'&&session&&!session.done){releaseAll();session=null;paused=false;hidePanel();toast('已離開連線房間，本節未扣券。');}
   }else if(status==='reconnecting'&&session&&!paused){close();toast('連線中斷，訓練已暫停，正在重新連線。');}
   updatePresence();renderRoster();
@@ -162,7 +162,7 @@ function updateUI(){
   $('#goal-bar').style.width=`${Math.min(100,weekly()/8*100)}%`;
   $('#total').textContent=`累積成長 ${Object.values(player.abilities).reduce((a,b)=>a+b,0)}`;
   $('#save-state').textContent=saveWarning||'本機自動存檔 · 請定期匯出備份';
-  $('#member-name').textContent=activeCharacter(profile)?.name||'本機新玩家';
+  $('#member-name').textContent=profile?.name||'本機新玩家';
 }
 function toast(message){$('#toast').textContent=message;$('#toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,3600);}
 function show(content,tag='訓練準備',contextual=false){
@@ -305,8 +305,8 @@ function releaseAll(){keys.clear();inputSources.clear();if(session){if(!session.
 window.addEventListener('blur',()=>{releaseAll();if(session&&!session.done&&!paused)close();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){releaseAll();if(session&&!session.done&&!paused)close();}});
 window.addEventListener('storage',e=>{if(e.key===PROFILE_KEY||e.key===null){
-  const oldId=profile?.id,oldCharacter=profile?.activeId,oldName=activeCharacter(profile)?.name;player=load();
-  if(profile?.id!==oldId||profile?.activeId!==oldCharacter||activeCharacter(profile)?.name!==oldName){startGeneration++;releaseAll();session=null;settling=false;entered=false;net.leave().catch(networkError);showAccount();}
+  const oldId=profile?.id,oldCharacter=profile?.activeId,oldName=profile?.name;player=load();
+  if(profile?.id!==oldId||profile?.activeId!==oldCharacter||profile?.name!==oldName){startGeneration++;releaseAll();session=null;settling=false;entered=false;net.leave().catch(networkError);showAccount();}
   else if(accountOpen&&!session)showAccount();updateUI();
 }});
 for(const b of document.querySelectorAll('[data-move]')){
