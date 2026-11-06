@@ -1,3 +1,4 @@
+import {drawWalkSprite} from './walk-sprite.mjs';
 import {garmentStyle,drawGarment,clothSegment,wristband,mix,shade} from './garments.mjs';
 // C01 exercise poses. Sprite heads retain the approved character identity;
 // articulated bodies use two-world-pixel clusters so every pose follows input.
@@ -159,7 +160,7 @@ export function drawExerciseActor(ctx,station,session,art,frames,paused=false,lo
   const previousP=P,previousV=V;setLook(look);
   ctx.save();ctx.imageSmoothingEnabled=false;ctx.translate(Math.round(station.x),Math.round(station.y));
   switch(session.category){
-    case 'cardio':ctx.translate(0,-23);standing(ctx,art,frames,3,session.time||0,!paused,session.sprint);break;
+    case 'cardio':ctx.translate(0,-23);drawWalkSprite(ctx,0,0,3,session.time||0,!paused,art.actor,frames,look,session.sprint);break;
     case 'push':bench(ctx,session,art,frames);break;
     // P02's seat and footplate sit twenty pixels above its floor anchor.
     case 'pull':ctx.translate(0,-20);row(ctx,session,art,frames);break;
@@ -169,19 +170,10 @@ export function drawExerciseActor(ctx,station,session,art,frames,paused=false,lo
   ctx.restore();P=previousP;V=previousV;
 }
 
-function standing(c,art,frames,dir,time=0,moving=false,sprint=false){
- const side=dir===1||dir===2,back=dir===3,beat=moving?Math.sin(time*(sprint?16:10)):0,bob=moving?Math.abs(beat)*2:0,wide=side?.65:1;
- c.save();if(dir===2)c.scale(-1,1);c.translate(0,-bob);
- const shoulder=-72,hip=-38,feet=[[-11*wide+beat*4,-Math.max(0,beat)*7],[11*wide-beat*4,-Math.max(0,-beat)*7]],knees=[[-12*wide+beat*7,-20],[12*wide-beat*7,-20]];
- for(let i=0;i<2;i++){thigh(c,[(i?10:-10)*wide,hip],knees[i],12,i===1);calf(c,knees[i],feet[i],9,i===1);shoe(c,feet[i][0]-2,feet[i][1],side?-1:i?1:-1);}
- shorts(c,[[-17*wide,-43],[17*wide,-43],[20*wide,-28],[4,-23],[0,-28],[-5,-23],[-20*wide,-28]]);
- const shoulders=[[-17*wide,shoulder+5],[17*wide,shoulder+5]],elbows=[[-23*wide-beat*7,-48],[23*wide+beat*7,-48]],hands=[[-25*wide-beat*7,-32],[25*wide+beat*7,-32]];
- upperArm(c,shoulders[0],elbows[0],10,false);forearm(c,elbows[0],hands[0],8,false);
- torso(c,[[-18*wide,shoulder],[18*wide,shoulder],[14*wide,hip-3],[-14*wide,hip-3]],back);
- upperArm(c,shoulders[1],elbows[1],10);forearm(c,elbows[1],hands[1],8);
- head(c,art,frames,side?3:back?9:0,0,shoulder-31,32);
- c.restore();
-}
 export function drawWalkingActor(ctx,x,y,dir,time,moving,art,frames,look){
- if(!art.actor||!frames.length)return;const previousP=P,previousV=V;setLook(look);ctx.save();ctx.imageSmoothingEnabled=false;ctx.translate(Math.round(x),Math.round(y));standing(ctx,art,frames,dir,time,moving);ctx.restore();P=previousP;V=previousV;
+  if(!art.actor||!frames.length)return;
+  ctx.save();
+  ctx.imageSmoothingEnabled=false;
+  drawWalkSprite(ctx,x,y,dir,time,moving,art.actor,frames,look);
+  ctx.restore();
 }

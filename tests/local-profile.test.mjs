@@ -7,7 +7,8 @@ function setup(){const values=new Map();let chain=Promise.resolve();const storag
 const now=Date.parse('2026-11-05T06:00:00Z');
 const training=(id,category)=>({id,category,score:1,now});
 
-test('wardrobe belongs to one character, survives backup and concurrent training without resetting shared tickets',async()=>{
+test('wardrobe belongs to one character, survives backup and concurrent training without resetting shared tickets',async t=>{
+ t.mock.method(Date,'now',()=>now);
  const {store}=setup();let p=await store.create('玩家','一號','#81e8bb');const owner=p.id,first=p.activeId;
  p=await store.create('玩家','二號','#f2c28e');const second=p.characters[1].id;
  p.characters[0].progress.mastery.push=12;p.characters[0].progress.completedWeeks=['2026-10-26'];
