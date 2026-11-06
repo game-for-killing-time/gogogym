@@ -73,9 +73,7 @@ function dressedFrame(atlas,frame,index,look) {
   return fitted;
 }
 
-export function drawWalkSprite(ctx,x,y,dir,time,moving,atlas,frames,look,sprint=false){
-  const step=moving?1+Math.floor(time*(sprint?11:7))%2:0, index=dir*3+step, frame=frames[index];
-  if(!frame)return;
+export function spriteFrame(atlas,frame,index,look){
   const o=look?.outfit;
   const plain=!o||(look.stage===1&&o.top==='top-01-basic-tank'&&o.bottom==='bottom-01-navy-shorts'&&o.shoes==='shoes-01-white-trainers'&&o.accessory==='none');
   let image=atlas, crop=frame;
@@ -91,6 +89,13 @@ export function drawWalkSprite(ctx,x,y,dir,time,moving,atlas,frames,look,sprint=
     }
     crop={x:0,y:0,w:image.width,h:image.height};
   }
+  return {image,crop};
+}
+
+export function drawWalkSprite(ctx,x,y,dir,time,moving,atlas,frames,look,sprint=false){
+  const step=moving?1+Math.floor(time*(sprint?11:7))%2:0, index=dir*3+step, frame=frames[index];
+  if(!frame)return;
+  const {image,crop}=spriteFrame(atlas,frame,index,look);
   const h=103,w=Math.round(h*crop.w/crop.h);
   ctx.drawImage(image,crop.x,crop.y,crop.w,crop.h,Math.round(x-w/2),Math.round(y-h),w,h);
 }
